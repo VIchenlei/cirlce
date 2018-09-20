@@ -1,0 +1,185 @@
+/* pages/cirtitle/setcir/circlemember/circlemember.wxss */
+
+page {
+    background: #edf0f7;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.lf {
+    float: left;
+}
+
+.rg {
+    float: right;
+}
+
+.serchname {
+    height: 60rpx;
+    width: 722rpx;
+    border: 4rpx solid #e1e4eb;
+    margin: 10rpx;
+    background: #fff;
+    border-radius: 8rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nametxt {
+    font-size: 30rpx;
+    color: #9a9a9a;
+    padding-left: 10rpx;
+}
+
+.blacklist {
+    height: 100rpx;
+    background: #fff;
+    line-height: 100rpx;
+    padding: 0 10rpx;
+}
+
+.blacklisttxt {
+    font-size: 28rpx;
+    color: #333;
+}
+
+.ml20 {
+    margin-left: 20rpx;
+}
+
+.mt15 {
+    margin-top: 15rpx;
+}
+
+.m30 {
+    margin-top: 30rpx;
+}
+
+.mr20 {
+    margin-right: 20rpx;
+}
+
+.mange,
+.members {
+    margin-left: 30rpx;
+}
+
+.mange,
+.members {
+    height: 100rpx;
+    background: #fff;
+    line-height: 100rpx;
+    padding: 0 10rpx;
+    /*	padding-left:30rpx;*/
+}
+
+.mangetxt {
+    font-size: 28rpx;
+    color: #999999;
+    padding-left: 30rpx;
+    line-height: 60rpx;
+    background: #f0f4f8;
+}
+
+.membertxt {
+    font-size: 28rpx;
+    color: #999;
+    line-height: 100rpx;
+}
+
+.maskLayer {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.2;
+    overflow: hidden;
+    z-index: 1000;
+    color: #fff;
+}
+
+.choose {
+    width: 710rpx;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    left: 20rpx;
+    z-index: 2000;
+    /*background: #fff;*/
+}
+
+.choosebox {
+    width: 100%;
+    text-align: center;
+    background: #fff;
+    border-radius: 8rpx;
+}
+
+.chooseimg {
+    vertical-align: middle;
+    margin-top: 30rpx;
+}
+
+.choosename {
+    font-size: 28rpx;
+    color: #333;
+    line-height: 48rpx;
+}
+
+.choosedate {
+    font-size: 28rpx;
+    color: #999;
+    height: 36rpx;
+}
+
+.choosereomvetxt {
+    font-size: 30rpx;
+    color: #fb3f35;
+    padding: 26rpx 0;
+    border-top: 2rpx solid #dee1e8;
+}
+
+.cancel {
+    font-size: 30rpx;
+    background: #fff;
+    text-align: center;
+    color: #077bfb;
+    border-radius: 8rpx;
+    margin: 10rpx 0;
+}
+
+.txtcolor {
+    color: #077bfb;
+}
+
+.borderbt {
+    border-top: 2rpx solid #e6e6e6;
+}
+
+.mange-fa {
+    background: #fff;
+}
+
+#borderbt0 {
+    border-top: none;
+}
+
+.searchlf{
+    font-size: 28rpx;
+    line-height:56rpx;
+}
+.searchbar-result {
+    margin-top: 0;
+}
+.searchbar-result:before{
+    border-top:none;
+}

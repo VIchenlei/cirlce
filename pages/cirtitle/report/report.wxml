@@ -1,0 +1,10 @@
+<!--pages/cirtitle/report/report.wxml-->
+<view class="page">
+    <view class="report clearfix" wx:for="{{reportItem}}" wx:key="reportKey" bindtap="reportTap" data-value="{{item.value}}">
+        <view class="report-radio lf {{select == item.value ? 'bgcolor':''}}"></view>
+        <view class="report-txt lf">{{item.name}}</view>
+    </view>
+    <view class="btn">
+        <button class="button" disabled="{{disabled}}"  size="default"  bindtap="submit" hover-class="custom-button-hover-class">提交</button>		
+    </view>
+</view>

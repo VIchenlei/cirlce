@@ -1,0 +1,53 @@
+/* pages/user/personalData/personalData/modifyName/modifyName.wxss */
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.lf {
+    float: left;
+}
+
+.rg {
+    float: right;
+}
+
+page {
+    height:100%; 
+    background: #f0f4f8;
+}
+
+.mod {
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20rpx;
+    border-top: 1rpx solid #eeeeee;
+    border-bottom: 1rpx solid #eeeeee;
+    position: absolute;
+    left: 0;
+    top: 50rpx;
+}
+
+.modbtn {
+    width: 670rpx;
+    font-size: 30rpx;
+    color: #333;
+}
+
+.btn {
+    width: 720rpx;
+    position: absolute;
+    bottom: 0;
+    padding: 15rpx;
+}
+
+.btn .button {
+    background-color: #c55c47;
+    color: #fff;
+}

@@ -1,0 +1,166 @@
+<!--pages/themedetails/themedetails.wxml-->
+<view wx:if="{{isshow}}">
+	<view class="dynamic">
+		<view class="dynamic-cont">
+			<view class="dynamic-item borderno">
+				<view class="dynamic-item-top clearfix">
+					<image class="dynamic-item-top-lf-img lf" catchtap="personTap" data-id="{{details.circleId}}" data-userid="{{details.userId}}" lazy-load="{{lazyload}}" style="width:90rpx;height:90rpx; border-radius:50%" src="{{details.avatarUr}}"></image>
+					<view class="lf dynamic-item-top-fa">
+						<view class="clearfix">
+							<text class="dynamic-item-top-lf-user lf {{details.role!='成员'?(details.role=='圈主'?'circolor':'admincolor'):''}}"  catchtap="personTap" data-id="{{details.circleId}}" data-userid="{{details.userId}}"> {{details.nickName}} </text>
+							<text class="dynamic-item-top-lf-cir lf {{details.role!='成员'?(details.role=='圈主'?'cirbg':'adminbg'):''}}" wx:if="{{details.role=='成员'?false:true}}"> {{details.role}} </text>
+							<image class="dynamic-item-top-rg rg" lazy-load="{{lazyload}}" style="width: 41rpx; height:41rpx;" data-del="{{details.isCanDelete}}" src="{{dropdown}}" data-themeId="{{details.id}}" bindtap="sharelinkTap" data-index="{{themeidx}}"></image>
+						</view>
+						<view class="dynamic-sign">{{details.sign}}</view>
+					</view>
+				</view>
+				<view class="dynamic-item-ct">
+					<view class="dynamic-item-ct-cont">
+						<view class="dynamic-item-ct-pay" wx:if="{{details.isFree==false}}">
+							<view class="dynamic-item-ct-tit">{{details.introduction}}</view>
+							<view class="dynamic-item-ct-paytxt" wx:if="{{details.isCanView?false:(details.themeText.length==0||details.themeText==null?false:true)}}" catchtap="payCheckTap" data-themeid="{{details.id}}"  data-money="{{details.payMoney}}">剩余{{details.themeText.length}}字已被发布者设置为付费内容，点击支付{{details.payMoney}}元查看完整内容</view>
+						</view>
+						<view class="dynamic-item-ct-paid" wx:if="{{details.isCanView}}">
+							<text id="{{themeidx}}" class="dynamic-item-ct-tit" selectable="true">{{details.themeText!=null?details.themeText:""}}</text>
+						</view>
+					</view>
+					<!-- 图片 -->
+					<view class="dynamic-imglist clearfix" wx:if="{{details.images.length>0}}" >
+						<image lazy-load="{{lazyload}}" mode="aspectFill" class="nineimg lf" wx:for="{{details.images}}" wx:for-index="imgesindex" wx:key="imageskey"  wx:for-item="imgitem" style="width:175rpx;height:175rpx;" src="{{imgitem}}" catchtap="{{details.isCanView?'detailimgTap':'payCheckTap'}}" data-index="{{imgesindex}}" data-src="{{details.images}}" data-themeid="{{details.id}}"  data-money="{{details.payMoney}}"></image>
+					</view>
+					<!-- 视频 -->
+					<view class="dynamic-video" wx:if="{{details.videos[0].scale>1}}">
+						<view  class="ninevideo" id="ninevideo{{details.id}}"  data-video="{{details.id}}" data-src="{{details.videos[0].videoUrl}}" catchtap="{{details.isCanView?'jumpvideo':'payCheckTap'}}" data-themeid="{{details.id}}"  data-money="{{details.payMoney}}">
+							<view class="ninevideofa1"  wx:if="{{details.videos[0].scale>1}}">
+								<image lazy-load="{{lazyload}}" style="width:520rpx;height:280rpx; vertical-align:middle;" src="{{details.videos[0].videoCoverUrl}}" data-src="{{details.videos[0].videoUrl}}"></image>
+								<image lazy-load="{{lazyload}}" class="ninevideoplay1" style="width:70rpx;height:70rpx;" src="/images/play.png"></image>
+							</view>
+						</view>
+					</view>
+					<view class="Verticalvideo" wx:if="{{details.videos[0].scale<1}}">
+						<view class="ninevideofa2"  wx:if="{{details.videos[0].scale<1}}" style="height:440rpx; position: relative;" id="ninevideo{{details.id}}"  data-video="{{details.id}}" data-src="{{details.videos[0].videoUrl}}" catchtap="{{details.isCanView?'jumpvideo':'payCheckTap'}}" data-themeid="{{details.id}}"  data-money="{{details.payMoney}}">
+							<image class="{{details.videos[0].rotation>0?'rotateRight':''}}" lazy-load="{{lazyload}}"  style="width:{{details.videos[0].rotation>0?'440':'250'}}rpx;height:{{details.videos[0].rotation>0?'250':'440'}}rpx; vertical-align:middle;" src="{{details.videos[0].videoCoverUrl}}" data-src="{{details.videos[0].videoUrl}}"></image>
+							<image lazy-load="{{lazyload}}" class="ninevideoplay2" style="width:70rpx;height:70rpx;" src="/images/play.png"></image>
+						</view>
+					</view>
+
+					<!-- 音频 -->
+					<view class="dynamic-audios" wx:if="{{details.audios.length>0}}">
+						<view class="nineaudio" id="nineaudio{{details.id}}" data-name="{{details.nickName}}" catchtap="{{details.isCanView?'playaudio':'payCheckTap'}}" data-head="{{details.avatarUr}}" data-audio="{{details.audios[0]}}" data-themeid="{{details.id}}"  data-money="{{details.payMoney}}">
+							<image lazy-load="{{lazyload}}" style="width:568rpx;height:80rpx;vertical-align:middle;" src="/images/playaudiobg.png"></image>
+							<text class="timelong">{{details.audios[0].formatDuration}}</text>
+						</view>
+					</view>
+					<view class="dynamic-item-bt clearfix">
+						<text class="dynamic-item-bt-txt"> {{details.creationTimeFormat}} </text>
+						<view class="dynamic-item-bt-rg">
+							<image lazy-load="{{lazyload}}" style="width:30rpx; height: 30rpx; margin:0 0 0 50rpx;" src="{{payimg}}" catchtap="rewardTap" data-themeid="{{details.id}}"></image>
+							<image lazy-load="{{lazyload}}" style="width:30rpx; height: 30rpx; margin:0 50rpx;" data-index="{{themeidx}}" data-userid="{{details.praiseList.userId}}" data-praid="{{details.id}}" src="{{details.isPraise==true ? ispraiseimg:collectimg}}" catchtap="praiseTap"></image>
+							<image lazy-load="{{lazyload}}" style="width:30rpx; height: 30rpx;" src="{{commentimg}}" catchtap="commentTap" data-com="{{isdiscombtn}}" data-index="{{themeidx}}" data-foruserid="0" data-forcomid="0" data-themeid="{{details.id}}"></image>
+						</view>
+					</view>
+					<view class="collect-user" wx:if="{{details.praiseList.length>0}}">
+						<image class="collect-user-img" lazy-load="{{lazyload}}" style="width:34rpx; height:34rpx;" wx:if="{{details.praiseList.length>0}}" src="{{collectshow}}"></image>
+						<label class="collect-username"  data-userid="{{user.userId}}" wx:for="{{details.praiseList}}" wx:for-item="user" wx:key="praisekey" wx:for-index="idx">{{ user.nickName}}
+							<label wx:if="{{idx<details.praiseList.length-1}}">,</label>
+						</label>
+					</view>
+					<view class="comment-cont" wx:if="{{details.commentList.length>0}}">
+						<view class="reply" wx:for="{{details.commentList}}" wx:for-item="reply" wx:key="replykey" wx:for-index="replyidx">
+							<view class="replyfa">
+								<text class="replytxt {{details.role!='成员'?(details.role=='圈主'?'circolor':'admincolor'):''}}" catchtap="personTap" data-id="{{details.circleId}}" data-userid="{{details.userId}}">{{reply.nickName}}</text>
+								<text class="replytxt replycolor" wx:if="{{reply.forUserId!=0}}"> 回复 </text>
+								<text class="replytxt {{details.role!='成员'?(details.role=='圈主'?'circolor':'admincolor'):''}}" wx:if="{{reply.forUserId!=0}}" catchtap="personTap" data-id="{{details.circleId}}" data-userid="{{details.forUserId}}">{{reply.forNickName}}</text>
+								<text class="replytxt">:</text>
+								<text class="replytxt replycolor" bindtap="delorcomTap" data-foruserid="{{reply.userId}}" data-themeid="{{details.id}}" data-comid="{{reply.id}}">{{reply.commentText}}</text>
+								<text wx:if="{{reply.imageUrl!=null}}" data-prviewimg="{{reply.imageUrl}}" bindtap="prviewTap" class="replytxt">查看图片</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="cirinfo clearfix" bindtap="jumpcirTap">
+		<image class="lf" style="width:150rpx;height:150rpx;vertical-align:middle;"  mode="aspectFill"  src="{{cirinfo.coverPicture}}"></image>
+		<view class="cirinfolf lf">
+			<view class="cirinfolf-com clearfix">
+				<text class="lf cirinfolf-com-top-txt">{{cirinfo.name}}</text>
+				<text class="rg cirinfolf-com-top-txt comein">进入</text>
+			</view>
+			<view class="cirinfolf-com clearfix">
+				<text class="lf cirinfolf-com-ct-txt">{{cirinfo.masterNickName}}创建</text>
+				<text class="lf cirinfolf-com-ct-txt lf50">成员{{cirinfo.membersCount}}</text>
+				<text class="lf cirinfolf-com-ct-txt lf50">主题{{cirinfo.themesCount}}</text>
+			</view>
+			<view class="cirinfolf-com-ct-txt cirintro">{{cirinfo.intro}}</view>
+		</view>
+	</view>
+</view>
+<view class="weui-cell audioFixed" wx:if="{{isAudio}}">
+    <view class="weui-cell__hd" data-audioSrc="{{audioUrl}}">
+        <image src="{{pauseStatus === false ? '/images/pause-audio.png' : '/images/play-audio.png'}}" style="width: 80rpx; height:80rpx;border-radius:50%;vertical-align:middle;padding:20rpx;" catchtap="bindTapPlay"/>
+    </view>
+    <view class="weui-cell__bd" style="position: relative;">
+        <view class="clearfix">
+        	<text class="lf audio-txt">{{playIngTxt}}</text>
+        	<text class="lf audio-txt audio-blue">{{name=='null'?'':name}}</text>
+        	<text class="lf audio-txt">的语音</text>
+        </view>
+        <view class="newscont">
+        	{{currentPosition}}/{{duration}}
+    	</view>
+    	<image class="icon-back" src="/images/audio-back.png" catchtap="offAudioTap"/>
+    </view>
+</view>
+<!-- 底部弹出分享链接 -->
+<view class="share-mask" wx:if="{{isshare}}" bindtap="coloesharelinkTap" catchtouchmove="{{catchtouchmove}}"></view>
+<view class="share-link" wx:if="{{isshare}}">
+	<scroll-view scroll-x="true">
+		<view class="clearfix">
+			<view class="lf share-fa">
+				<image class="shareimg" style="width:80rpx;height:80rpx;" src="{{isCollect==false?'/images/slices.png':'/images/slices-1.png'}}" bindtap="collectTap"></image>
+				<text class="sharetxt">{{isCollect==false?'收藏':'已收藏'}}</text>
+			</view>
+			<view class="lf share-fa">
+				<image class="shareimg" style="width:80rpx;height:80rpx;" src="/images/deltheme.png" bindtap="delthemeTap"></image>
+				<text class="sharetxt">删除</text>
+			</view>
+            <view class="lf share-fa">
+					<image class="shareimg" style="width:80rpx;height:80rpx;" src="/images/report.png" catchtap="reportTap"></image>
+					<text class="sharetxt">举报</text>
+				</view>
+		</view>
+	</scroll-view>
+	<view class="share-cancel" bindtap="coloesharelinkTap">消息</view>
+</view>
+<!-- 评论输入框 -->
+<view class="comfa" wx:if="{{isdiscombtn}}"  catchtouchmove="{{catchtouchmove}}">
+	<view class="comfa-mask" bindtap="blankTap" data-com="{{isdiscombtn}}"></view>
+	<view class="comInput">
+		<view class="comInput-top clearfix">
+			<image class="comInput-top-img lf" style="width:40rpx;height:40rpx;" src="{{replyimgurl}}" data-src="{{replyimgurl}}" bindtap="replyimgurlTap"></image>
+			<text class="omInput-top-txt rg" bindtap="sendTap"  data-index="{{themeidx}}">发送</text>
+		</view>
+		<textarea class="comInput-txt"  value="{{replyvalue}}" placeholder="你的想法" auto-height maxlength="-1" bindblur="bulrtap" bindconfirm="bulrtap" bindinput="bulrtap" focus/>
+	</view>
+</view>
+<!-- 删除、回复评论 -->
+<view class="delcom" wx:if="{{delorcom}}">
+	<view class="delcom-mask" bindtap="closedelrepTap"></view>
+	<view class="delcom-cont">
+		<view class="delcom-reply delcom-txt" bindtap="delcomreplyTap">回复</view>
+		<view class="delcom-del delcom-txt"  bindtap="delcomdelTap">删除</view>
+	</view>
+</view>
+<!-- 打赏 -->
+<view class="reward-mask" wx:if="{{isreward}}" catchtap="closeRewardTap" catchtouchmove="{{catchtouchmove}}"></view>
+<view class="reward" wx:if="{{isreward}}" catchtouchmove="{{catchtouchmove}}">
+    <image class="reward-img" src="/images/reward.png"></image>
+    <view class="reward-txt">感谢您的支持</view>
+    <input class="reward-input" type="digit" placeholder="￥0.1-200" value="{{moneysymbol}}{{rewardNum}}" bindinput="rewardInput" focus="{{rewardfocus}}"
+        disabled="{{isRewardDisaled}}" />
+    <view class="reward-otheramount" catchtap="rewardOtherTap">其他金额</view>
+    <view class="reward-btn" catchtap="payRewardTap">赏</view>
+    <icon class="reward-clear" type="clear" size="30" color="#fff" catchtap="closeRewardTap" />
+</view>

@@ -1,0 +1,45 @@
+/* pages/user/wallet/wallet.wxss */
+
+page {
+    background: #f0f4f8;
+}
+
+.money {
+    padding: 30rpx 30rpx 0;
+    background: #c55c47;
+}
+
+.money-txt {
+    font-size: 26rpx;
+    color: #fff;
+    line-height: 100%;
+}
+
+.padt50 {
+    padding-top: 50rpx;
+}
+
+.money-show {
+    font-size:80rpx;
+    color: #fff;
+    font-weight:400;
+    line-height: 240rpx;
+    border-bottom: 1rpx solid #dbdbdb;
+}
+
+.money-income-txt {
+    line-height: 80rpx;
+}
+.chooseFun{
+    padding-top:40rpx;
+}
+.weui-cells:before {
+    border-top: none;
+}
+
+.weui-cells:after {
+    border-bottom: none;
+}
+.mart20{
+    margin-top:20rpx;
+}

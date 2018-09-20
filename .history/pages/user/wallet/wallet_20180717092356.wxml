@@ -1,0 +1,34 @@
+<!--pages/user/wallet/wallet.wxml-->
+<view class="page">
+
+    <view class="money">
+        <view class="money-txt padt50">可提现(元)</view>
+        <view class="money-show">{{_canCashAmount}}</view>
+        <view class="money-income clearfix">
+            <text class="money-txt money-income-txt lf">累积收入(元)</text>
+            <text class="money-txt money-income-txt rg">{{_incomeAmount}}</text>
+        </view>
+    </view>
+
+    <view class="chooseFun">
+        <view class="weui-cells weui-cells_after-title">
+            <navigator url="/pages/user/wallet/detail/detail" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <image src="/images/detail.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">收支明细</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+        </view>
+        
+        <view class="weui-cells weui-cells_after-title mart20" catchtap="withdrawTap">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <image src="/images/Withdrawals.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">提现</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,19 @@
+/* pages/personalSpace/personalSpace.wxss */
+page{
+    height:100%;
+}
+.page{
+    height: 100%;
+}
+.personabg {
+    position: relative;
+}
+
+.personaName {
+    width: 750rpx;
+    position: absolute;
+    text-align: center;
+    top: 172rpx;
+    font-size: 32rpx;
+    color: #fff;
+}

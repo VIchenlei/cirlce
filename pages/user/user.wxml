@@ -1,0 +1,58 @@
+<view class="page" wx:if="{{isLoad}}">
+    <view class="weui-cells mrt40">
+        <view bindtap="personaTap" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                <image style="border-radius:50%;" class="weui-media-box__thumb" mode="aspectFill" src="{{head}}" />
+            </view>
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                <view class="weui-media-box__title">{{nickName}}</view>
+                <view class="weui-media-box__desc">
+                    <view class="weui-media-box__info">
+                        <view class="weui-media-box__info__meta">创建圈子：{{info.createCircleCount}}个，</view>
+                        <view class="weui-media-box__info__meta">加入圈子：{{info.inviteCircleCount}}个</view> 
+                    </view>
+                </view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+    </view>
+	<view class="cont">
+		<view class="weui-cells weui-cells_after-title mrt40">
+            <navigator url="/pages/user/wallet/wallet" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <image src="/images/wallet.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">钱包</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+            <navigator url="/pages/user/myCollection/myCollection" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <image src="/images/star.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">收藏</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{info.favoriteCount}}</view>
+            </navigator>
+            <navigator url="/pages/user/myRelease/myRelease" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <image src="/images/edit.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">我发布的</view> 
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{info.publishCount}}</view>
+            </navigator>
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <image src="/images/set.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">设置</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+            <navigator url="/pages/user/helpfeedback/helpfeedback" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <image src="/images/explain.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">帮助与反馈</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+        </view>
+	</view>
+</view>

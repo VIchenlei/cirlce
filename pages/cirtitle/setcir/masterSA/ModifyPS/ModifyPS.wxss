@@ -1,0 +1,5 @@
+/* pages/cirtitle/setcir/masterSA/ModifyPS/ModifyPS.wxss */
+
+page {
+    background: #edf0f7;
+}

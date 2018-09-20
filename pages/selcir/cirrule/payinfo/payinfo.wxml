@@ -1,0 +1,74 @@
+<!--pages/cirrule/pay/payinfo/payinfo.wxml-->
+<view class="jewel">
+	<image class="jewelimg" style="width:150rpx;height:150rpx;" src="{{jewelimg}}"></image>
+</view>
+<view class="dersert">
+	<view class="dersert-cont">
+		<view class="dersert-cont-top clearfix">
+			<text class="dersert-txt lf">按月订阅</text>
+			<switch class="switch rg" checked="{{checked0}}" data-val="0" bindchange="switch1Change"/>
+		</view>
+		<view class="money clearfix" wx:if="{{checked0}}">
+			<text class="lf moneytxt">Ұ</text>
+			<input  class="lf moneytxt moneybtn" placeholder="1~1000" data-val="0" value="{{value0}}" type="digit" placeholder-style="custom-placeholder-style" placeholder-class="custom-placeholder-class" maxlength='5' bindinput="inputVlaue"/>
+			<text class="moneytxt rg">/月</text>
+		</view>
+	</view>
+	<view class="dersert-cont">
+		<view class="dersert-cont-top clearfix">
+			<text class="dersert-txt lf">按季订阅</text>
+			<switch class="switch rg" checked="{{checked1}}" data-val="1" bindchange="switch1Change"/>
+		</view>
+		<view class="money clearfix" wx:if="{{checked1}}">
+			<text class="lf moneytxt">Ұ</text>
+			<input  class="lf moneytxt moneybtn" placeholder="1~1500" data-val="1" value="{{value1}}" type="digit" placeholder-style="custom-placeholder-style" placeholder-class="custom-placeholder-class" maxlength='5' bindinput="inputVlaue"/>
+			<text class="moneytxt rg">/季</text>
+		</view>
+	</view>
+	<view class="dersert-cont">
+		<view class="dersert-cont-top clearfix">
+			<text class="dersert-txt lf">按半年订阅</text>
+			<switch class="switch rg" checked="{{checked2}}" data-val="2" bindchange="switch1Change"/>
+		</view>
+		<view class="money clearfix" wx:if="{{checked2}}">
+			<text class="lf moneytxt">Ұ</text>
+			<input  class="lf moneytxt moneybtn" placeholder="1~2000" data-val="2" value="{{value2}}" type="digit" placeholder-style="custom-placeholder-style" placeholder-class="custom-placeholder-class" maxlength='5' bindinput="inputVlaue" />
+			<text class="moneytxt rg">/半年</text>
+		</view>
+	</view>
+	<view class="dersert-cont">
+		<view class="dersert-cont-top clearfix">
+			<text class="dersert-txt lf">按年订阅</text>
+			<switch class="switch rg" checked="{{checked3}}" data-val="3" bindchange="switch1Change"/>
+		</view>
+		<view class="money clearfix" wx:if="{{checked3}}">
+			<text class="lf moneytxt">Ұ</text>
+			<input  class="lf moneytxt moneybtn" placeholder="1~2500" data-val="3" value="{{value3}}" type="digit" placeholder-style="custom-placeholder-style" placeholder-class="custom-placeholder-class" maxlength='5' bindinput="inputVlaue" />
+			<text class="moneytxt rg">/年</text>
+		</view>
+	</view>
+	<view class="dersert-cont">
+		<view class="dersert-cont-top clearfix">
+			<text class="dersert-txt lf">永久有效</text>
+			<switch class="switch rg" checked="{{checked4}}" data-val="4" bindchange="switch1Change"/>
+		</view>
+		<view class="money clearfix" wx:if="{{checked4}}">
+			<text class="lf moneytxt">Ұ</text>
+			<input  class="lf moneytxt moneybtn" placeholder="1~3000" data-val="4" value="{{value4}}" type="digit" placeholder-style="custom-placeholder-style" placeholder-class="money-placeholder" maxlength='5' bindinput="inputVlaue" />
+			<text class="moneytxt rg">/永久</text>
+		</view>
+	</view>
+	<view class="describe">
+		<text class="destxt">用户按季、半年、年订阅后，在圈子正常经营期间，订阅金额会</text>
+		<text class="destxt descolor">按月返还</text>
+		<text class="destxt">到你的账户</text>
+	</view>
+	<view class="describe marbt">
+		<text class="destxt">用户按永久订阅后，在圈子正常经营期间，订阅金额会在一年内</text>
+		<text class="destxt descolor">按月返还</text>
+		<text class="destxt">到你的账户</text>
+	</view>
+</view>
+<view class="btn">
+	<button class="button" disabled="{{disabled}}"  size="default"  bindtap="payinfoTap" hover-class="custom-button-hover-class">下一步</button>		
+</view>

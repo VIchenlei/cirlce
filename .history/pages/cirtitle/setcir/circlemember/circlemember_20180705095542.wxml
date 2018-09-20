@@ -1,0 +1,83 @@
+<!--pages/cirtitle/setcir/circlemember/circlemember.wxml-->
+<view class="member page" wx:if="{{isload}}">
+    <view class="page__bd">
+        <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="用户昵称" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping"
+                    />
+                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14"></icon>
+                    <view class="weui-search-bar__text">用户昵称</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+        </view>
+        <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
+            <view class="mange-fa">
+                <view wx:for="{{memmberListArr}}" wx:key="memmberListKey" wx:for-index="index">
+                    <view class="mangetxt">{{item.firstCode}}</view>
+                    <view class="members bt clearfix borderbt" id="borderbt{{membersidx}}" wx:for="{{item.members}}" wx:for-index="membersidx"
+                        wx:for-item="members" wx:key="membersKey">
+                        <image class="lf mt15" bindtap="personTap" data-userid="{{members.id}}" style="width:70rpx; height:70rpx;border-radius:50%;"
+                            src="{{members.avatarUrl}}"></image>
+                        <text class="lf blacklisttxt ml20">{{members.nickName}}</text>
+                        <image wx:if="{{members.role<role?false:(userId==members.id?false:true)}}" bindtap="setAuthorityTap" data-idx="{{index}}"
+                            data-id="{{members.id}}" data-role="{{members.role}}" data-index="{{membersidx}}" class="rg mr20 m30"
+                            style="width:40rpx; height:40rpx;" src="/images/more.png"></image>
+                        <image wx:if="{{(userId==members.id|allowPrivateChat=='false')? false:true}}" class="rg mr20 m30" style="width:40rpx; height:40rpx;"
+                            src="/images/ptletter.png"></image>
+                        <text class="rg membertxt mr20" wx:if="{{members.role>2?false:true}}">{{members.roleName}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="blacklist clearfix" bindtap="blackListTap" data-blackList="{{blackListArr}}" hidden="{{inputShowed}}">
+        <image class="lf mt15 ml20" style="width:70rpx; height:70rpx;" src="/images/blacklist.png"></image>
+        <text class="lf blacklisttxt ml20">黑名单</text>
+        <image class="rg m30" style="width:40rpx; height:40rpx;" src="/images/lf-icon.png"></image>
+    </view>
+    <!-- 圈主、管理员、成员 -->
+    <view class="mange-fa" hidden="{{inputShowed}}">
+        <view wx:for="{{memmberListArr}}" wx:key="memmberListKey">
+            <view class="mangetxt">{{item.firstCode}}</view>
+            <view class="members bt clearfix borderbt" id="borderbt{{membersidx}}" wx:for="{{item.members}}" wx:for-index="membersidx"
+                wx:for-item="members" wx:key="membersKey">
+                <image class="lf mt15" bindtap="personTap" data-userid="{{members.id}}" style="width:70rpx; height:70rpx;border-radius:50%;"
+                    src="{{members.avatarUrl}}"></image>
+                <text class="lf blacklisttxt ml20">{{members.nickName}}</text>
+                <image wx:if="{{members.role<role?false:(userId==members.id?false:true)}}" bindtap="setAuthorityTap" data-idx="{{index}}"
+                    data-id="{{members.id}}" data-role="{{members.role}}" data-index="{{membersidx}}" class="rg mr20 m30" style="width:40rpx; height:40rpx;"
+                    src="/images/more.png"></image>
+                <image wx:if="{{(userId==members.id|allowPrivateChat=='false')? false:true}}" class="rg mr20 m30" style="width:40rpx; height:40rpx;"
+                    src="/images/ptletter.png"></image>
+                <text class="rg membertxt mr20" wx:if="{{members.role>2?false:true}}">{{members.roleName}}</text>
+            </view>
+        </view>
+    </view>
+
+    <view class="dynamic-empty" wx:if="{{isempty}}">
+        <image class="img" style="width:200rpx; height:200rpx;" src="{{emptyimg}}"></image>
+        <text class="empty-txt">{{emptytxt}}</text>
+    </view>
+</view>
+<view class='maskLayer' wx:if="{{chooseSize}}" bindtap='hideModal'></view>
+<view class='choose' wx:if="{{chooseSize}}" animation='{{animationData}}'>
+    <view class="choosebox">
+        <image class="chooseimg" style="width:70rpx;height:70rpx;border-radius:50%;" src="{{setmembers.avatarUrl}}"></image>
+        <view class="choosename">{{setmembers.nickName}}</view>
+        <text class="choosedate">{{setmembers.formatString}}</text>
+        <view class="mt15">
+            <view class="choosereomvetxt txtcolor" bindtap="SetAdminTap" data-id="{{id}}" data-role="{{mangeOrMember}}" wx:if="{{role==1? true:false}}">{{setOffMangeTxt}}</view>
+            <view class="choosereomvetxt" bindtap="removeMemberTap" data-id="{{id}}" data-role="{{mangeOrMember}}" data-idx="{{index}}">移出圈子</view>
+            <view class="choosereomvetxt" bindtap="removeMemberIsBackTap" data-id="{{id}}" data-role="{{mangeOrMember}}" data-idx="{{index}}">移出圈子并加入黑名单</view>
+        </view>
+    </view>
+    <view class="cancel choosereomvetxt" bindtap='hideModal'>取消</view>
+</view>

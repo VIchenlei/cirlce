@@ -1,0 +1,8 @@
+<!--pages/cirtitle/setcir/modifysign/modifysign.wxml-->
+<view class="mod clearfix">
+	<input class="modbtn lf" placeholder="请输入个性签名" focus="false" value="{{value}}" type="text" placeholder-style="custom-placeholder-style" placeholder-class="custom-placeholder-class"  maxlength="30" auto-focus bindinput="btnvalue"/>
+	<icon class="moddel lf" type="clear" size="15" color="#b4b4b4" bindtap="clearTap"/>	
+</view>
+<view class="btn">
+	<button class="button" disabled="{{disabled}}" plain="{{plain}}" loading="{{loading}}"  size="default"  bindtap="modsignTap" hover-class="custom-button-hover-class">完成</button>		
+</view>

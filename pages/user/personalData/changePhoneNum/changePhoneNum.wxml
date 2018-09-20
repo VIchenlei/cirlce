@@ -1,0 +1,13 @@
+<!--pages/user/personalData/personalData/changePhoneNum/changePhoneNum.wxml-->
+<view class="page">
+	<view class="phoneImg">
+		<image class="weui-media-box__thumb" mode="aspectFill" src="/images/changephone.png" />
+	</view>
+	<view class="phonebox">
+		<view class="phonetxt">已绑定的手机号码</view>
+		<view class="phonenum">{{phone=='null'?'':phone}}</view>
+	</view>
+	<view class="sure">
+    	<button class="weui-btn"  bindtap="replaceBtn">更换手机号码</button>
+    </view>
+</view>

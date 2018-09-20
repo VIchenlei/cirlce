@@ -1,0 +1,26 @@
+<!--pages/user/wallet/detail/detailMessage/detailMessage.wxml-->
+<view class="page">
+	<view class="money">
+		<view class="receive-date">{{_message.createTimeFormat}}</view>
+		<view class="weui-form-preview">
+	        <view class="weui-form-preview__bd">
+	        	<view class="title">{{_message.introduce}}</view>
+	        	<view class="date">{{_message.createTimeFormat}}</view>
+	        	<view class="moneyNum">{{_message.moneyFormat}}</view>
+	            <view class="weui-form-preview__item mart15">
+	                <view class="weui-form-preview__label">交易内容:</view>
+	                <view class="weui-form-preview__value">{{_message.introduce}}</view>
+	            </view>
+	            <view class="weui-form-preview__item">
+	                <view class="weui-form-preview__label">交易单号:</view>
+	                <view class="weui-form-preview__value">{{_message.orderNumber}}</view>
+	            </view>
+	            <view class="weui-form-preview__item marb15">
+	                <view class="weui-form-preview__label">到账时间:</view>
+	                <view class="weui-form-preview__value">{{_message.createTimeFormat}}</view>
+	            </view>
+	            
+	        </view>
+	    </view>    
+	</view>
+</view>

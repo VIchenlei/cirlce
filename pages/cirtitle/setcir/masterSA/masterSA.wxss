@@ -1,0 +1,70 @@
+/* pages/cirtitle/setcir/masterSA/masterSA.wxss */
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.lf {
+    float: left;
+}
+
+.rg {
+    float: right;
+}
+
+page {
+    position: relative;
+    background: #edf0f7;
+}
+
+.masterSA {
+    margin-top: 30rpx;
+    font-size:28rpx;
+}
+
+.weui-cells:before {
+    border-top: none;
+}
+
+.weui-cells:after {
+    border-bottom: none;
+}
+
+.switch {
+    width: 90rpx !important;
+    height: 50rpx !important;
+}
+
+/*swtich样式-start*/
+
+/*swtich整体大小*/
+
+.wx-switch-input {
+    width: 90rpx !important;
+    height: 50rpx !important;
+    background: #c55c47 !important;
+    border: none !important;
+}
+
+/*白色样式（false的样式）*/
+
+.wx-switch-input::before {
+    width: 90rpx !important;
+    height: 50rpx !important;
+    background: #d9d9d9 !important;
+    border: none !important;
+}
+
+/*绿色样式（true的样式）*/
+
+.wx-switch-input::after {
+    width: 52rpx !important;
+    height: 50rpx !important;
+    border: none !important;
+}
+
+/*swtich样式end*/

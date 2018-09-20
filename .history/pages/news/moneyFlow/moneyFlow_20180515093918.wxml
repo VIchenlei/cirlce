@@ -1,0 +1,25 @@
+<!--pages/news/moneyFlow/moneyFlow.wxml-->
+<view class="page">
+	<view class="money" wx:for="{{moneyFlowArr}}" wx:key="moneyFlowKey">
+		<view class="receive-date">{{item.timeFormatTop}}</view>
+		<view class="weui-form-preview">
+	        <view class="weui-form-preview__bd">
+	        	<view class="title">{{item.title}}</view>
+	        	<view class="date">{{item.timeFormatShort}}</view>
+	        	<view class="moneyNum">{{item.moneyFormat}}</view>
+	            <view class="weui-form-preview__item" wx:for="{{item.keyValuesList}}" wx:key="listKey" wx:for-item="keyValue">
+	                <view class="weui-form-preview__label">{{keyValue.key}}</view>
+	                <view class="weui-form-preview__value">{{keyValue.value}}</view>
+	            </view>
+	            <view class="weui-cell weui-cell_access" wx:if="{{item.themeId==0&&item.circleId==0?false:true}}" bindtap="detailimgTap" data-circleId="{{item.circleId}}" data-themeId="{{item.themeId}}">
+	                <view class="weui-cell__bd">{{item.themeId>0?'查看主题':'查看圈子'}}</view>
+	                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+	            </view>
+	        </view>
+	    </view>    
+	</view>
+    <!-- loadmore -->
+    <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>  
+    <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+</view>
+

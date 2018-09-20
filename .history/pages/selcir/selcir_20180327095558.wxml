@@ -1,0 +1,10 @@
+<view class="sel">
+	<view class="sel-top clearfix">
+		<image class="selimg lf" bindtap="cirrulefreeTap" style="width:150rpx; height: 150rpx; "  src="{{freeimg}}" ></image>
+		<image class="selimg rg" bindtap="cirrulepayTap" style="width:150rpx; height: 150rpx; "  src="{{jewelimg}}" ></image>
+	</view>
+	<view class="sel-bt clearfix">
+		<text class="seltxt lf"> {{ freetxt }} </text>
+		<text class="seltxt rg"> {{ jeweltxt }} </text>		
+	</view>
+</view>

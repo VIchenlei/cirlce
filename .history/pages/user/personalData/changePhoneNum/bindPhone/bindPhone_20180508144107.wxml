@@ -1,0 +1,64 @@
+<!--pages/user/personalData/personalData/changePhoneNum/bindPhone/bindPhone.wxml-->
+<view class="page">
+	<view class="weui-media-box">
+		<view class="prompttxt">为确保您账号的安全及正常使用，依据《网络安全法》相关要求，使用不叫事圈儿产品，需要您绑定手机号码，感谢您的理解与支持！</view>
+	</view>
+	<view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+            <view class="weui-cell__hd">
+                <view class="weui-label">手机号</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="{{phoneplaceholder}}" focus="{{focus}}" value="{{phoneValue}}" type="number"  maxlength="11"  bindinput="phonenumbtn"/>
+            </view>
+            <view class="weui-cell__ft"> 
+                <view class="weui-vcode-btn btnlf"></view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title mrt40">
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+            <view class="weui-cell__hd">
+                <view class="weui-label">验证码</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="{{numplaceholder}}" focus="{{focus}}" value="{{value}}" type="number"  maxlength="6"  bindinput="btnvalue"/>
+            </view>
+            <view class="weui-cell__ft"> 
+                <button class="weui-vcode-btn btnCover"  bindtap="getimgcodebtn" disabled="{{getmsgdisabled}}">{{time}}</button>
+            </view>
+        </view>
+    </view>
+
+    <checkbox-group catchchange="bindAgreeChange" style="margin-top:20rpx;">
+        <label class="weui-agree" for="weuiAgree">
+            <view class="weui-agree__text"  >
+                <checkbox class="weui-agree__checkbox" id="weuiAgree" value="{{isAgree}}" checked="{{isAgree}}"/>
+                <view class="weui-agree__checkbox-icon">
+                    <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+                </view>
+                阅读并同意<navigator url="/pages/selcir/cirrule/agreement/agreement" class="weui-agree__link">《用户协议》</navigator>
+            </view>
+        </label>
+    </checkbox-group>
+    
+	<view class="btnfa">
+        <button class="weui-btn" disabled="{{disabled}}" plain="{{plain}}" loading="{{loading}}"  bindtap="bindphoneTap">立即绑定</button>	   
+    </view>
+	<!--mask-->
+	<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view> 
+	<!--content-->
+	<!--使用animation属性指定需要执行的动画-->
+	<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">  
+	 <!--drawer content-->
+		<view class="drawer_box-tit">请输入下方验证码</view>
+		<view class="drawer_box-fa clearfix">
+			<input class="drawer_box-fa-inpput lf" placeholder="" focus="{{focus}}" value="{{imgcodevalue}}" type="text"   maxlength="4"  bindinput="imgcodevaluebtn"/>
+			<image bindtap="imgbtn" class="drawer_box-fa-img lf" style="width:120rpx;height:68rpx;" src="{{src}}" ></image>	
+		</view>
+		<view class="drawer_box-bt">
+			<view class="cancel drawer_box-bt-txt lf" bindtap="cancelbtn">取消</view>
+			<view class="sure drawer_box-bt-txt lf" bindtap="surebtn">确定</view>
+		</view>
+	</view>
+</view>

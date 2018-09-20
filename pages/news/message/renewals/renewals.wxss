@@ -1,0 +1,38 @@
+/* pages/news/message/renewals/renewals.wxss */
+page{
+    background: #eee;
+}
+.weui-cells:before {
+    border-top: none;
+}
+
+.weui-cells:after {
+    border-bottom: none;
+}
+.mart30{
+    margin-top:30rpx;
+}
+.choose-amount{
+    width: 180rpx;
+    height:60rpx;
+    color:#c55c47;
+    border-radius:30rpx;
+    border:1rpx solid #c55c47;
+    line-height: 60rpx;
+    text-align: center;
+}
+.select{
+   color:#fff;
+   background: #c55c47;
+}
+.btn {
+    width: 720rpx;
+    position: absolute;
+    bottom: 0;
+    padding: 15rpx;
+}
+
+.btn .button {
+    background-color: #c55c47;
+    color: #fff;
+}

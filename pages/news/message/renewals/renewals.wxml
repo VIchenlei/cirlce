@@ -1,0 +1,19 @@
+<!--pages/news/message/renewals/renewals.wxml-->
+<view class="page">
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_access">
+            <view class="weui-cell__bd">请选择要续订的服务</view>
+        </view>   
+    </view>
+    <view class="weui-cells weui-cells_after-title mart30">
+        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{tollList}}" wx:key="tollKey" data-type="{{item.type}}" catchtap="selectToll" data-tollnum="{{item.tollNum}}">
+            <view class="weui-cell__bd">{{item.tollName}}</view>
+            <view class="weui-cell__ft">
+                <view class="choose-amount {{type==item.type?'select':''}}">￥{{item.tollNum}}</view>
+            </view>
+        </view>  
+    </view>
+    <view class="btn">
+        <button class="button" disabled="{{disabled}}"  size="default"  bindtap="surebtn" hover-class="custom-button-hover-class">确认续订</button>		
+    </view>
+</view>

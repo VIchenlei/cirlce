@@ -1,0 +1,2 @@
+/* pages/user/wallet/detail/detailMessage/detailMessage.wxss */
+@import '../../../../news/moneyFlow/moneyFlow.wxss';

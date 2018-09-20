@@ -1,0 +1,88 @@
+/* pages/news/moneyFlow/moneyFlow.wxss */
+
+page {
+    background: #f0f3fa;
+}
+
+.page {
+    height:100%;
+    padding-bottom: 30rpx;
+}
+
+.money {
+    padding: 0 30rpx;
+}
+
+.weui-form-preview:before {
+    border-top: none;
+}
+
+.weui-form-preview:after {
+    border-bottom: none;
+}
+
+.weui-form-preview__bd {
+    text-align: left;
+}
+
+.title {
+    font-size: 30rpx;
+    color: #333;
+}
+
+.date {
+    font-size: 26rpx;
+    color: #999;
+}
+
+.moneyNum {
+    font-size: 60rpx;
+    color: #333;
+    text-align: center;
+    border-bottom: 1rpx solid #eee;
+    line-height: 100rpx;
+}
+
+.weui-form-preview__value {
+    line-height: 50rpx;
+    font-size: 28rpx;
+    color: #333;
+}
+
+.weui-form-preview__label {
+    text-align: initial;
+    text-align-last: initial;
+    font-size: 28rpx;
+    line-height: 50rpx;
+}
+
+.mart15 {
+    margin-top: 15rpx;
+}
+
+.marb15 {
+    margin-bottom: 15rpx;
+}
+
+.weui-cell {
+    padding: 0;
+    border-top: 1rpx solid #eee;
+    color: #333;
+    font-size: 30rpx;
+    padding-top: 15rpx;
+}
+
+.weui-cell:before {
+    border-top: none;
+}
+
+.weui-cell__ft_in-access:after {
+    border-color: #666;
+}
+
+.receive-date {
+    font-size: 24rpx;
+    color: #666;
+    text-align: center;
+    padding: 30rpx 0;
+}

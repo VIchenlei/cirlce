@@ -1,0 +1,48 @@
+/* pages/user/helpfeedback/helpfeedback.wxss */
+
+page {
+    background: #fff;
+}
+
+.page {
+    overflow: hidden;
+}
+.title{
+    font-size: 28rpx;
+    color: #333;
+    line-height: 80rpx;
+    padding-left:30rpx;
+}
+.weui-cells {
+    background: #efefef;
+}
+
+.weui-cells:before {
+    border-top: none;
+}
+
+.weui-cells:after {
+    border-bottom: none;
+}
+
+.weui-uploader {
+    padding: 30rpx;
+    background: #efefef;
+}
+
+.btn {
+    width: 690rpx;
+    position: absolute;
+    bottom: 30rpx;
+    left:50%;
+    margin-left: -345rpx;
+}
+
+.btn .button {
+    background-color: #c55c47;
+    color: #fff;
+}
+
+.btn .button-hover {
+    background-color: #a04f3f;
+}

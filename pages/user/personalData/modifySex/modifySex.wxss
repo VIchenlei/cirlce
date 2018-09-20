@@ -1,0 +1,50 @@
+/* pages/user/personalData/personalData/modifySex/modifySex.wxss */
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.lf {
+    float: left;
+}
+
+.rg {
+    float: right;
+}
+
+page {
+    height:100%;
+    background: #f0f4f8;
+}
+
+.page {
+    overflow: hidden;
+}
+
+.mart50 {
+    margin-top: 50rpx;
+}
+
+.btn {
+    width: 720rpx;
+    position: absolute;
+    bottom: 0;
+    padding: 15rpx;
+}
+
+.btn .button {
+    background-color: #c55c47;
+    color: #fff;
+}
+
+.weui-cells:before {
+    border-top: none;
+}
+
+.weui-cells:after {
+    border-bottom: none;
+}

@@ -1,0 +1,191 @@
+/* pages/cirtitle/setcir/setcir.wxss */
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.lf {
+    float: left;
+}
+
+.rg {
+    float: right;
+}
+
+page {
+    background: #edf0f7;
+}
+
+.setcir {
+    padding: 40rpx;
+    background: #fff;
+}
+
+.setcir-top {
+    padding-bottom: 40rpx;
+    border-bottom: 1rpx solid #e2e1e6;
+}
+
+.setcir-top-img {
+    border-radius: 6rpx;
+}
+
+.setcir-top-cont {
+    padding-left: 40rpx;
+}
+
+.setcir-top-tit {
+    font-size: 36rpx;
+    color: #333;
+    line-height: 80rpx;
+}
+
+.setcir-top-ct-txt {
+    font-size: 28rpx;
+    color: #999;
+    line-height: 60rpx;
+}
+
+.secendtxt {
+    padding-left: 40rpx;
+}
+
+.setcir-brief {
+    font-size: 28rpx;
+    color: #999;
+    padding: 30rpx 0 10rpx;
+}
+
+.setcir-briefcont {
+    font-size: 30rpx;
+    color: #333;
+}
+
+.sharp {
+    width: 720rpx;
+    position: fixed;
+    bottom: 0;
+    padding: 15rpx;
+    border-top: 1rpx solid #e1e4eb;
+    background: #fff;
+}
+
+.sharpbtn {
+    background: #c55c47;
+    text-align: center;
+    color: #FFF;
+    overflow: hidden;
+}
+
+.sharp-btn-img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.btntxt {
+    font-size: 30rpx;
+    line-height: 100%;
+    padding-left: 10rpx;
+    color: #fff;
+}
+
+.ciruser {
+    width: 720rpx;
+    background: #fff;
+    padding-left: 30rpx;
+    margin: 40rpx 0;
+}
+
+.comment {
+    padding: 20rpx 30rpx 20rpx 0;
+    line-height: 80rpx;
+}
+
+.combt {
+    border-top: 1rpx solid #e6e6e6;
+}
+
+.comtxt {
+    font-size: 30rpx;
+    color: #222;
+    line-height: 75rpx;
+}
+
+.comimg {
+    margin-top: 10rpx;
+}
+
+.comlftxt {
+    line-height: 60rpx;
+}
+
+.comrgtxt {
+    font-size: 30rpx;
+    color: #999;
+    line-height: 60rpx;
+}
+
+.comrgimg {
+    vertical-align: middle;
+}
+
+.switch {
+    background: #fff;
+    padding: 30rpx;
+    margin-top: 40rpx;
+}
+
+.wx-switch-input {
+    background: #f18b2d !important;
+    border: 2rpx solid #fff !important;
+}
+
+/*白色样式（false的样式）*/
+
+.wx-switch-input::before {
+    background: #d9d9d9 !important;
+    border: 2rpx solid #fff !important;
+}
+
+/*swtich样式end*/
+
+.fill-switch-txt {
+    font-size: 30rpx;
+    color: #222;
+    line-height: 56rpx;
+}
+
+.explain {
+    padding-left: 30rpx;
+}
+
+.eptxt {
+    width: 100%;
+    font-size: 28rpx;
+    color: #999;
+}
+
+.on {
+    color: #c55c47;
+}
+
+.signoutcir {
+    /*width:750rpx; */
+    padding: 50rpx 0 160rpx;
+    text-align: center;
+}
+
+.signtxt {
+    font-size: 30rpx;
+    color: #999;
+}
+
+.signwidth {
+    width: 525rpx;
+    padding-left: 5rpx;
+    text-align: right;
+}

@@ -1,0 +1,104 @@
+<!--pages/cirtitle/setcir/setcir.wxml-->
+<view wx:if="{{isLoad}}">
+	<view class="setcir">
+		<view class="setcir-top clearfix">
+			<image class="lf setcir-top-img" style="width:200rpx;height: 200rpx;" mode="aspectFill" src="{{coverimg}}"></image>
+			<view class="lf setcir-top-cont">
+				<text class="setcir-top-tit">{{name}}</text>
+				<view class="setcir-top-ct clearfix">
+					<text class="lf setcir-top-ct-txt">成员{{cirinfo.membersCount}}</text>
+					<text class="lf secendtxt setcir-top-ct-txt">主题{{cirinfo.themesCount}}</text>			
+				</view>	
+				<text class="setcir-top-bt setcir-top-ct-txt">{{cirinfo.creationTimeFormat}}</text>	
+			</view>
+		</view>
+		<view class="setcir-bt">
+			<view class="setcir-brief">简介</view>	
+			<text class="setcir-briefcont">{{intro}}</text>			
+		</view>
+	</view>
+	<view class="ciruser">
+		<view class="comment clearfix" bindtap="reviseHeadImg" data-userId="{{cirinfo.circleUserId}}">
+			<text class="lf comtxt">我在本圈子的头像</text>
+			<view class="rg clearfix">
+				<image class="lf" style="width:75rpx;height:75rpx;border-radius:50%;" mode="aspectFill" src="{{head}}"></image>
+				<image class="lf comimg" style="width:40rpx;height:40rpx;margin-top:15rpx;" src="{{lfimg}}"></image>
+			</view>
+		</view>
+		<view class="comment combt clearfix" bindtap="modifynameTap">
+			<text class="lf comtxt comlftxt">我在本圈子的昵称</text>
+			<view class="rg clearfix">
+				<text class="lf comrgtxt">{{myNickName}}</text>
+				<image class="lf comimg comrgimg" style="width:40rpx;height:40rpx; " src="{{lfimg}}"></image>
+			</view>
+		</view>
+		<view class="comment combt clearfix" bindtap="modifysignTap">
+			<text class="lf comtxt comlftxt">个性签名</text>
+			<text class="lf comrgtxt signwidth">{{mySign}}</text>
+			<view class="rg clearfix">			
+				<image class="lf comimg comrgimg" style="width:40rpx;height:40rpx; " src="{{lfimg}}"></image>
+			</view>
+		</view>
+		<view class="comment combt clearfix" wx:if="{{isedit}}" bindtap="editInfoTap">
+			<text class="lf comtxt comlftxt">编辑圈子资料</text>
+			<view class="rg clearfix">
+				<image class="lf comimg comrgimg" style="width:40rpx;height:40rpx; " src="{{lfimg}}"></image>
+			</view>
+		</view>
+		<view class="comment combt clearfix" wx:if="{{ismember}}" bindtap="memberTap">
+			<text class="lf comtxt comlftxt">圈子成员</text>
+			<view class="rg clearfix">
+				<text class="lf comrgtxt">{{cirinfo.membersCount}}</text>
+				<image class="lf comimg comrgimg" style="width:40rpx;height:40rpx; " src="{{lfimg}}"></image>
+			</view>
+		</view>
+		<view class="comment combt clearfix" wx:if="{{isInvitation}}" bindtap="inviteTap">
+			<text class="lf comtxt comlftxt">邀请榜</text>
+			<view class="rg clearfix">
+				<image class="lf comimg comrgimg" style="width:40rpx;height:40rpx; " src="{{lfimg}}"></image>
+			</view>
+		</view>
+		<view class="comment combt clearfix" wx:if="{{isEntrymode}}" bindtap="{{cirinfo.joinMode=='付费'?'changePayMethod':''}}" id="{{id}}" data-circleid="{{id}}">
+			<text class="lf comtxt comlftxt">成员加入方式</text>
+			<view class="rg clearfix">
+				<text class="lf comrgtxt">{{cirinfo.joinMode}}</text>
+				<image class="lf comimg comrgimg" style="width:40rpx;height:40rpx; " src="{{lfimg}}"></image>
+			</view>
+		</view>
+		<view class="comment combt clearfix" wx:if="{{isexamine}}" bindtap="joinAuditTap">
+			<text class="lf comtxt comlftxt">成员加入审核</text>
+			<view class="rg clearfix">
+				<image class="lf comimg comrgimg" style="width:40rpx;height:40rpx; " src="{{lfimg}}"></image>
+			</view>
+		</view>
+	</view>
+	<view class="ciruser" wx:if="{{isJurisdiction}}" bindtap="masterSATap">
+		<view class="comment clearfix">
+			<text class="lf comtxt comlftxt">圈子权限设置</text>
+			<view class="rg clearfix">
+				<image class="lf comimg comrgimg" style="width:40rpx;height:40rpx; " src="{{lfimg}}"></image>
+			</view>
+		</view>
+	</view>
+	<view class="fill switch" style="display: none;">
+		<view class="fill-switch clearfix">
+			<text class="fill-switch-txt lf">接收圈子消息</text>
+			<switch class="fill-switch-btn rg" checked="{{switchcheck}}" bindchange="switchChange"/>					
+		</view>
+	</view>
+	<view class="explain">
+		<text class="eptxt">要接收到消息提醒，须先</text>
+		<text class="eptxt on"> 关注不叫事儿圈众号 </text>
+		<text class="eptxt"> 或 </text>
+		<text class="eptxt on"> 安装不叫事圈儿APP</text>
+	</view>
+	<view class="signoutcir">
+		<text class="signtxt" bindtap="signoutcirTap">退出圈子</text>
+	</view>
+	<view class="sharp">
+		<button class="sharpbtn" open-type="share">
+			<image class="sharp-btn-img" style="width:40rpx;height:40rpx;" src="{{qrimg}}"></image>
+			<text class="btntxt">分享圈子</text>
+		</button>
+	</view>
+</view>

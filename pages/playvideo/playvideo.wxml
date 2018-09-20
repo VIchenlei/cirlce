@@ -1,0 +1,4 @@
+<!--pages/playvideo/playvideo.wxml-->
+<view class="videofa">
+  <video id="{{id}}" class="video"  src="{{videosrc}}" show-progress="false" show-fullscreen-btn="false" show-play-btn="false" direction="90" autoplay="true" bindfullscreenchange="changevideo"></video>
+</view>

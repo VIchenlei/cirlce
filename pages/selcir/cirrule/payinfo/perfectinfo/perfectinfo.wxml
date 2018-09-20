@@ -1,0 +1,34 @@
+<view class="info"> 
+	<view class="info-setbg">
+		<view class="setcover" wx:if="{{isset}}" bindtap="setimgurlTap">
+			<image class="setbgimg" style="width:60rpx; height:54rpx;" src="{{setcover}}"></image>
+			<text class="setbgtxt">设置封面</text>		
+		</view>
+		<view class="setcover" wx:if="{{iscover}}" bindtap="setimgurlTap">
+			<image class="coverimg" mode="aspectFill" style="width:250rpx; height:250rpx;" src="{{coverimg}}"></image>	
+		</view>
+	</view>
+	<view class="info-fill">
+		<view class="fill">
+			<view class="fill-name clearfix">
+				<text class="fill-name-txt lf">名称</text>
+				<input class="fill-name-btn lf" placeholder="最多10个字,超过被省略" bindinput="namebtnTap" maxlength="10" value="{{namevalue}}" type="text" />		
+			</view>
+		</view>
+		<view class="fill">
+			<view class="fill-pro clearfix">
+				<text class="fill-pro-txt lf">简介</text>
+				<textarea class="fill-pro-btn lf"  value="{{introvalue}}" maxlength="100" bindinput="introbtnTap" placeholder="最多100字" auto-height />		
+			</view>
+		</view>
+		<view class="fill">
+			<view class="fill-switch clearfix">
+				<text class="fill-switch-txt lf">成员加入审核</text>
+				<switch class="switch fill-switch-btn rg" checked="{{joinAudit}}" bindchange="switchChange"/>					
+			</view>
+		</view>
+	</view>
+	<view class="btn">
+		<button class="button" disabled="{{disabled}}" plain="{{plain}}" loading="{{loading}}"  size="default"  bindtap="submitTap" hover-class="custom-button-hover-class">提交</button>		
+	</view>
+</view>

@@ -1,0 +1,47 @@
+.lftxt {
+    font-size: 28rpx;
+    color: #333;
+}
+
+.rgtxt {
+    font-size: 26rpx;
+    color: #999;
+}
+
+.newscont {
+    width: 500rpx;
+    font-size: 26rpx;
+    color: #777;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.weui-cell {
+    border-bottom: 1rpx solid #eee;
+}
+
+.newsbadge {
+    position: absolute;
+    right: 0;
+    top: 45rpx;
+    font-size: 18rpx;
+    width: 34rpx;
+    height: 34rpx;
+    text-align: center;
+    line-height: 34rpx;
+    border-radius: 50%;
+    padding: 4rpx;
+}
+
+.weui-cell:before {
+    border-top: none;
+}
+
+.dynamic-empty{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -140rpx;
+    margin-top: -140rpx;
+}

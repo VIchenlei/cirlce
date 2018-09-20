@@ -1,0 +1,246 @@
+<view class="page" hidden="{{!isLoad}}">
+    <view class="topnav">
+        <view class="navbl clearfix">
+            <!--<button class="lf navtxt" open-type="share">邀请</button>-->
+            <button class="lf navtxt" bindtap="setcirTap">更多</button>
+            <image class="rg navqr" data-cir="{{cirqr}}" catchtap="cirqrshowTap" style="width:40rpx;height:40rpx;" src="{{qrimg}}"></image>
+        </view>
+        <view class="navwh clearfix">
+            <text class="lf navwhtxt">主题{{cirheadinfo.themeCount}}</text>
+            <view class="rg navwh-rg " data-cirfo="{{cirfollowTap}}" bindtap="cirfollowTap" style="display: {{foucedis}}">
+                <image class="lf navwhimg" style="width:35rpx;height:35rpx;" src="{{foucesimg}}"></image>
+                <text class="rg navwhtxt fouces">关注我</text>
+            </view>
+        </view>
+        <view class="navbg" bindtap="setcirTap">
+            <image mode="aspectFill" style="width: 180rpx; height:180rpx; vertical-align: middle;border-radius:6rpx;" src="{{coverPicture}}"></image>
+        </view>
+    </view>
+    <view class="bgcolor"></view>
+    <view class="dynamic-empty" style="display:{{themeisn}};">
+        <image class="img" style="width:200rpx; height:200rpx;" src="{{emptyimg}}"></image>
+        <text class="empty-txt">{{emptytxt}}</text>
+    </view>
+
+    <scroll-view class="dynamic" scroll-y scroll-with-animation='true' scroll-top='{{ scrolltop }}' style="height:84%;"  bindscrolltolower="loadmore">
+        <view class="dynamic-cont" style="display:{{themeisb}};">
+            <view class="dynamic-item" wx:for="{{themearr}}" wx:key="themekey" wx:for-index="themeidx">
+                <view class="dynamic-item-top clearfix">
+                    <image class="dynamic-item-top-lf-img lf" catchtap="personTap" data-id="{{id}}" id="{{id}}" data-userid="{{item.userId}}"
+                        lazy-load="{{lazyload}}" style="width:90rpx;height:90rpx; border-radius:50%" src="{{item.avatarUr}}"></image>
+                    <view class="lf dynamic-item-top-fa">
+                        <view class="hd clearfix">
+                            <text class="dynamic-item-top-lf-user lf {{item.role!='成员'?(item.role=='圈主'?'circolor':'admincolor'):''}}" catchtap="personTap" data-id="{{id}}" id="{{id}}" data-userid="{{item.userId}}">{{item.nickName}}</text>
+                            <text class="dynamic-item-top-lf-cir lf {{item.role!='成员'?(item.role=='圈主'?'cirbg':'adminbg'):''}}" wx:if="{{item.role=='成员'?false:true}}" >{{item.role}}</text>
+                            <image class="dynamic-item-top-rg rg" lazy-load="{{lazyload}}" style="width: 41rpx; height:41rpx;" data-del="{{item.isCanDelete}}"
+                                src="{{dropdown}}" data-themeId="{{item.id}}" catchtap="sharelinkTap" data-index="{{themeidx}}"></image>
+                        </view>
+                        <view class="dynamic-sign">{{item.sign}}</view>
+                    </view>
+                </view>
+
+                <view class="dynamic-item-ct">
+                    <view class="dynamic-item-ct-cont" catchtap="jumpDetailTap" data-id="{{item.id}}">
+                        <view class="dynamic-item-ct-pay">
+                            <view class="dynamic-item-ct-tit">{{item.introduction!=null?item.introduction:""}}</view>
+                            <view class="dynamic-item-ct-paytxt" wx:if="{{item.isCanView?false:(item.themeText.length==0||item.themeText==null?false:true)}}"
+                                catchtap="payCheckTap" data-themeid="{{item.id}}" data-index="{{themeidx}}" data-money="{{item.payMoney}}">剩余{{item.themeText.length}}字已被发布者设置为付费内容，点击支付{{item.payMoney}}元查看完整内容</view>
+                        </view>
+                        <view class="dynamic-item-ct-paid" hidden="{{!item.isCanView}}">
+                            <text id="{{themeidx}}" class="dynamic-item-ct-tit {{item.isExpandAllText ? extend:flod}}" selectable="true" data-hi="{{item.id}}">{{item.themeText!=null?item.themeText:""}}</text>
+                        </view>
+                    </view>
+
+                    <view class="alltxt" wx:if="{{item.themeText.length/18>5}}" catchtap="flodTap" data-hi="{{item.id}}" data-num="{{themeidx}}">{{!item.isExpandAllText ? "全文":"收起"}}</view>
+                    <!-- 图片 -->
+                    <view class="dynamic-imglist clearfix" wx:if="{{item.images.length>0}}" catchtap="jumpDetailTap" data-id="{{item.id}}">
+                        <image lazy-load="{{lazyload}}" mode="aspectFill" class="nineimg lf" wx:for="{{item.images}}" wx:for-index="imgesindex" wx:key="imageskey"
+                            wx:for-item="imgitem" style="width:175rpx;height:175rpx;" src="{{imgitem}}" catchtap="{{item.isCanView?'detailimgTap':'payCheckTap'}}"
+                            data-imgindex="{{imgesindex}}" data-src="{{item.images}}" data-themeid="{{item.id}}" data-money="{{item.payMoney}}"
+                            data-index="{{themeidx}}"></image>
+                    </view>
+                    <!-- 视频 -->
+
+                    <view class="dynamic-video" wx:if="{{item.videos[0].scale>1}}" catchtap="jumpDetailTap" data-id="{{item.id}}">
+                        <view class="ninevideo" id="ninevideo{{item.id}}" data-video="{{item.id}}" data-src="{{item.videos[0].videoUrl}}" catchtap="{{item.isCanView?'jumpvideo':'payCheckTap'}}"
+                            data-themeid="{{item.id}}" data-money="{{item.payMoney}}" data-index="{{themeidx}}">
+                            <view class="ninevideofa1" wx:if="{{item.videos[0].scale>1}}">
+                                <image lazy-load="{{lazyload}}" style="width:520rpx;height:280rpx; vertical-align:middle;" src="{{item.videos[0].videoCoverUrl}}"
+                                    data-src="{{item.videos[0].videoUrl}}"></image>
+                                <image lazy-load="{{lazyload}}" class="ninevideoplay1" style="width:70rpx;height:70rpx;" src="/images/play.png"></image>
+                            </view>
+                        </view>
+                    </view>
+
+                    <view class="Verticalvideo" wx:if="{{item.videos[0].scale<1}}" catchtap="jumpDetailTap" data-id="{{item.id}}">
+                        <view class="ninevideofa2 " wx:if="{{item.videos[0].scale<1}}" style="height:440rpx; position: relative;" id="ninevideo{{item.id}}"
+                            data-video="{{item.id}}" data-src="{{item.videos[0].videoUrl}}" catchtap="{{item.isCanView?'jumpvideo':'payCheckTap'}}"
+                            data-themeid="{{item.id}}" data-money="{{item.payMoney}}" data-index="{{themeidx}}">
+                            <image class="{{item.videos[0].rotation>0?'rotateRight':''}}" lazy-load="{{lazyload}}" style="width:{{item.videos[0].rotation>0?'440':'250'}}rpx;height:{{item.videos[0].rotation>0?'250':'440'}}rpx; vertical-align:middle;"
+                                src="{{item.videos[0].videoCoverUrl}}" data-src="{{item.videos[0].videoUrl}}"></image>
+                            <image lazy-load="{{lazyload}}" class="ninevideoplay2" style="width:70rpx;height:70rpx;" src="/images/play.png"></image>
+                        </view>
+                    </view>
+
+                    <!-- 音频 -->
+                    <view class="dynamic-audios" wx:if="{{item.audios.length>0}}">
+                        <view class="nineaudio" id="nineaudio{{item.id}}" catchtap="{{item.isCanView?'playaudio':'payCheckTap'}}" data-name="{{item.nickName}}"
+                            data-head="{{item.avatarUr}}" data-audio="{{item.audios[0]}}" data-themeid="{{item.id}}" data-money="{{item.payMoney}}"
+                            data-index="{{themeidx}}">
+                            <image lazy-load="{{lazyload}}" style="width:568rpx;height:80rpx;vertical-align:middle;" src="/images/playaudiobg.png"></image>
+                            <text class="timelong">{{item.audios[0].formatDuration}}</text>
+                        </view>
+                    </view>
+                    <view class="dynamic-item-bt clearfix">
+                        <text class="dynamic-item-bt-txt"> {{item.creationTimeFormat}} </text>
+                        <view class="dynamic-item-bt-rg">
+                            <image lazy-load="{{lazyload}}" style="width:30rpx; height: 30rpx;" src="../../images/share.png" catchtap="rewardTap" data-themeid="{{item.id}}"></image>
+                            <image lazy-load="{{lazyload}}" style="width:30rpx; height: 30rpx; margin:0 50rpx;" src="{{payimg}}" catchtap="rewardTap" data-themeid="{{item.id}}"></image>
+                            <image lazy-load="{{lazyload}}" style="width:30rpx; height: 30rpx; margin:0 50rpx;" data-index="{{themeidx}}" data-userid="{{item.praiseList.userId}}"
+                                data-praid="{{item.id}}" src="{{item.isPraise==true ? ispraiseimg:collectimg}}" catchtap="praiseTap"></image>
+                            <image lazy-load="{{lazyload}}" style="width:30rpx; height: 30rpx;" src="{{commentimg}}" catchtap="commentTap" data-com="{{isdiscombtn}}"
+                                data-index="{{themeidx}}" data-foruserid="0" data-forcomid="0" data-themeid="{{item.id}}"></image>
+                        </view>
+                    </view>
+                    <view class="collect-user" wx:if="{{item.praiseList.length>0}}">
+                        <image class="collect-user-img" lazy-load="{{lazyload}}" style="width:34rpx; height:34rpx;" wx:if="{{item.praiseList.length>0}}"
+                            src="{{collectshow}}"></image>
+                        <label class="collect-username" data-userid="{{user.userId}}" wx:for="{{item.praiseList}}" wx:for-item="user" wx:key="praisekey"
+                            wx:for-index="idx">{{ user.nickName}}
+                            <label wx:if="{{idx<item.praiseList.length-1}}">,</label>
+                        </label>
+                    </view>
+                    <view class="comment-cont" wx:if="{{item.commentList.length>0}}">
+                        <view class="reply" wx:for="{{item.commentList}}" wx:for-item="reply" wx:key="replykey" wx:for-index="replyidx">
+                            <view class="replyfa">
+                                <text class="replytxt {{item.role!='成员'?(item.role=='圈主'?'circolor':'admincolor'):''}}" catchtap="personTap" data-id="{{id}}" data-userid="{{reply.userId}}">{{reply.nickName}}</text>
+                                <text class="replytxt replycolor" wx:if="{{reply.forUserId!=0}}"> 回复 </text>
+                                <text class="replytxt {{item.role!='成员'?(item.role=='圈主'?'circolor':'admincolor'):''}}" wx:if="{{reply.forUserId!=0}}" catchtap="personTap" data-id="{{id}}" data-userid="{{reply.forUserId}}">{{reply.forNickName}}</text>
+                                <text class="replytxt">:</text>
+                                <text class="replytxt replycolor" catchtap="delorcomTap" data-index="{{themeidx}}" data-name="{{item.nickName}}" data-foruserid="{{reply.userId}}"
+                                    data-themeid="{{item.id}}" data-comid="{{reply.id}}">{{reply.commentText}}</text>
+                                <text wx:if="{{reply.imageUrl!=null}}" data-prviewimg="{{reply.imageUrl}}" catchtap="prviewTap" class="replytxt">查看图片</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <!-- loadmore -->
+            <view style="height:78rpx;">
+                <view class="weui-loadmore" hidden="{{searchLoading}}">
+                    <view class="weui-loading"></view>
+                    <view class="weui-loadmore__tips">正在加载</view>
+                </view>
+            </view>
+        </view>
+
+    </scroll-view>
+
+    <view class="weui-cell audioFixed" hidden="{{!isAudio}}">
+        <view class="weui-cell__hd" data-audioSrc="{{audioUrl}}">
+            <image src="{{pauseStatus === false ? '/images/pause-audio.png' : '/images/play-audio.png'}}" style="width: 80rpx; height:80rpx;border-radius:50%;vertical-align:middle;padding:20rpx;"
+                catchtap="bindTapPlay" />
+        </view>
+        <view class="weui-cell__bd" style="position: relative;">
+            <view class="clearfix">
+                <text class="lf audio-txt">{{playIngTxt}}</text>
+                <text class="lf audio-txt audio-blue">{{name=='null'?'':name}}</text>
+                <text class="lf audio-txt">的语音</text>
+            </view>
+            <view class="newscont">
+                {{currentPosition}}/{{duration}}
+            </view>
+            <image class="icon-back" src="/images/audio-back.png" catchtap="offAudioTap" />
+        </view>
+    </view>
+
+
+</view>
+<view class="addtheme" catchtap="addthemeTap" hidden="{{!isaddtheme}}" style="bottom:{{dragbottom}}rpx;right:{{dragright}}rpx">
+    <image style="width:120rpx; height: 120rpx;vertical-align: middle;" src="{{addthemeimg}}"></image>
+</view>
+<view class="cirtitleqr" data-cir="{{cirqr}}" catchtap="cirqrhideTap" style="display:{{cirqr}};">
+    <view class="cirtitleqr-cont">
+        <view>
+            <image style="width:600rpx;height:350rpx;vertical-align:middle;" src="{{coverPicture}}" mode="aspectFill"></image>
+        </view>
+        <view class="cirqr-cont-bt">
+            <text class="cirqr-cont-bt-txt">{{itemrgcont}}</text>
+            <view class="cirqr-cont-bt-name clearfix">
+                <image class="lf" style="width:40rpx;height:40rpx;" src="{{defaultheadimg}}"></image>
+                <text class="lf cirqrcont-txt">{{itemusertxt}}</text>
+            </view>
+            <view class="cirqr-cont-text clearfix">微信扫一扫加入圈子。{{intro}}</view>
+            <view class="bejser">- 不叫事圈儿。未来需要你的参与 -</view>
+        </view>
+        <view class="themeqr">
+            <image class="themeqr-img" style="width: 280rpx;height:280rpx;" catchtap="prviewTap" data-prviewimg="{{themeqrimg}}" src="{{themeqrimg}}"></image>
+        </view>
+    </view>
+</view>
+<view class="cirfollow" style="display:{{cirfollowTap}}" catchtouchmove="{{catchtouchmove}}">
+    <view class="mask" data-cirfo="{{cirfollowTap}}" catchtap="clearTap"></view>
+    <view class="sernum">
+        <view class="sername">不叫事圈儿服务号</view>
+        <view class="sertxt">截屏保存->微信扫一扫->相册打开关注</view>
+        <view class="serqr">
+            <image class="serqrimg" style="width:350rpx;height:350rpx" data-prviewimg="{{serqrcodeimg}}" catchtap="prviewTap" src="{{serqrcodeimg}}"></image>
+        </view>
+        <view class="clear" data-cirfo="{{cirfollowTap}}" catchtap="clearTap">
+            <icon type="clear" size="20" color="#fff" />
+        </view>
+    </view>
+</view>
+<!-- 评论输入框 -->
+<view class="comfa" hidden="{{!isdiscombtn}}" catchtouchmove="{{catchtouchmove}}">
+    <view class="comfa-mask" catchtap="blankTap" data-com="{{isdiscombtn}}"></view>
+    <view class="comInput">
+        <view class="comInput-top clearfix">
+            <image class="comInput-top-img lf" style="width:40rpx;height:40rpx;" src="{{replyimgurl}}" data-src="{{replyimgurl}}" catchtap="replyimgurlTap"></image>
+            <text class="omInput-top-txt rg" catchtap="sendTap" data-index="{{themeidx}}">发送</text>
+        </view>
+        <textarea class="comInput-txt" value="{{replyvalue}}" placeholder="{{foruserid==0?'你的想法':'回复'+replayName+':'}}" auto-height
+            maxlength="-1" bindblur="bulrtap" bindconfirm="bulrtap" bindinput="bulrtap" />
+    </view>
+</view>
+<!-- 底部弹出分享链接 -->
+<view class="share-mask" hidden="{{!isshare}}" catchtap="coloesharelinkTap" catchtouchmove="{{catchtouchmove}}"></view>
+<view class="share-link" hidden="{{!isshare}}" catchtouchmove="{{catchtouchmove}}">
+    <scroll-view>
+        <view class="clearfix" scroll-x="false">
+            <!--<view class="lf share-fa" catchtap="cirqrshowTap">
+                <image class="shareimg" style="width:80rpx;height:80rpx;" src="/images/clqrcode.png"></image>
+                <text class="sharetxt">二维码</text>
+            </view>-->
+            <view class="lf share-fa">
+                <image class="shareimg" style="width:80rpx;height:80rpx;" src="{{isCollect==false?'/images/slices.png':'/images/slices-1.png'}}"
+                    catchtap="collectTap"></image>
+                <text class="sharetxt">{{isCollect==false?'收藏':'已收藏'}}</text>
+            </view>
+            <view class="lf share-fa" wx:if="{{isCanDelete}}">
+                <image class="shareimg" style="width:80rpx;height:80rpx;" src="/images/deltheme.png" catchtap="delthemeTap"></image>
+                <text class="sharetxt">删除</text>
+            </view>
+            <view class="lf share-fa">
+                <image class="shareimg" style="width:80rpx;height:80rpx;" src="/images/report.png" catchtap="reportTap"></image>
+                <text class="sharetxt">举报</text>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="share-cancel" catchtap="coloesharelinkTap">取消</view>
+</view>
+
+<!-- 打赏 -->
+<view class="reward-mask" hidden="{{!isreward}}" catchtap="closeRewardTap" catchtouchmove="{{catchtouchmove}}"></view>
+<view class="reward" hidden="{{!isreward}}" catchtouchmove="{{catchtouchmove}}">
+    <image class="reward-img" src="/images/reward.png"></image>
+    <view class="reward-txt">感谢您的支持</view>
+    <input class="reward-input" type="digit" placeholder="￥0.1-200" value="{{moneysymbol}}{{rewardNum}}" bindinput="rewardInput" focus="{{rewardfocus}}"
+        disabled="{{isRewardDisaled}}" />
+    <view class="reward-otheramount" catchtap="rewardOtherTap">其他金额</view>
+    <view class="reward-btn" catchtap="payRewardTap">赏</view>
+    <icon class="reward-clear" type="clear" size="30" color="#fff" catchtap="closeRewardTap" />
+</view>
+<!-- <view wx:if="{{scrollTop>100}}" style="width:60rpx;height:60rpx;position:fixed; bottom:52rpx;right:66rpx;z-index:999;background:#fff;border-radius:50%;" catchtap="runtop">
+    <image src="/images/runtop.png" style="width:60rpx;height:60rpx;"/>
+</view> -->

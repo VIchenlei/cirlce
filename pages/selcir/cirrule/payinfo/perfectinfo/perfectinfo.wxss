@@ -1,0 +1,149 @@
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.lf {
+    float: left;
+}
+
+.rg {
+    float: right;
+}
+
+page {
+    height: 100%;
+}
+
+.info {
+    width: 750rpx;
+    height: 100%;
+}
+
+.info-setbg {
+    width: 750rpx;
+    background: #f0f4f8;
+    padding: 60rpx 0;
+}
+
+.setcover {
+    width: 250rpx;
+    height: 250rpx;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 10rpx;
+    text-align: center;
+}
+
+.setbgimg {
+    margin-top: 65rpx;
+}
+
+.setbgtxt {
+    display: block;
+    font-size: 30rpx;
+    color: #21272d;
+    line-height: 80rpx;
+}
+
+.info-fill {
+    width: 690rpx;
+    padding: 30rpx;
+}
+
+.switch {
+    width: 90rpx !important;
+    height: 50rpx !important;
+}
+
+/*swtich样式-start*/
+
+/*swtich整体大小*/
+
+.wx-switch-input {
+    width: 90rpx !important;
+    height: 50rpx !important;
+    background: #c55c47 !important;
+    border: none !important;
+}
+
+/*白色样式（false的样式）*/
+
+.wx-switch-input::before {
+    width: 90rpx !important;
+    height: 50rpx !important;
+    background: #d9d9d9 !important;
+    border: none !important;
+}
+
+/*绿色样式（true的样式）*/
+
+.wx-switch-input::after {
+    width: 52rpx !important;
+    height: 50rpx !important;
+    border: none !important;
+}
+
+/*swtich样式end*/
+
+.fill {
+    padding: 45rpx 0;
+    border-bottom: 1rpx solid #e1e4eb;
+}
+
+.fill-name-txt {
+    font-size: 30rpx;
+    color: #6d6d6d;
+    line-height: 52rpx;
+}
+
+.fill-name-btn {
+    width: 530rpx;
+    font-size: 30rpx;
+    color: #222;
+    padding-left: 50rpx;
+    line-height:52rpx;
+    margin-top:1rpx;
+}
+
+.fill-pro-txt {
+    font-size: 30rpx;
+    color: #6d6d6d;
+    text-align: center;
+    line-height:53rpx;
+}
+
+.fill-pro-btn {
+    width: 530rpx;
+    font-size: 30rpx;
+    color: #222;
+    padding-left: 50rpx;
+    margin-top:8rpx;
+}
+
+/*.switch{
+	padding:35rpx 0; 
+}*/
+
+.fill-switch-txt {
+    font-size: 30rpx;
+    color: #6d6d6d;
+    line-height: 56rpx;
+}
+
+.btn {
+    width: 720rpx;
+    position: absolute;
+    bottom: 0;
+    padding: 15rpx;
+    border-top: 1rpx solid #e1e4eb;
+}
+
+.btn .button {
+    background-color: #c55c47;
+    color: #fff;
+    font-size: 16px;
+}

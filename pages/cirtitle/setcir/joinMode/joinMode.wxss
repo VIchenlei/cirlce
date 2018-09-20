@@ -1,0 +1,14 @@
+/* pages/cirtitle/setcir/joinMode/joinMode.wxss */
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.lf{
+	float: left;
+}
+.rg{
+	float: right;
+}

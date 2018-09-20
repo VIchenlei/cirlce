@@ -1,0 +1,31 @@
+<!--pages/user/personalData/personalData.wxml-->
+<view class="page">
+	<view class="head">
+		<image style="width:160rpx;height:160rpx;border-radius:50%;" mode="aspectFill" class="weui-media-box__thumb" src="{{head}}" />
+		<image style="width:50rpx;height:50rpx;border-radius:50%;" bindtap="reviseHeadImg" class="shot" src="/images/shot.png" />
+	</view>
+	<view class="weui-cells weui-cells_after-title mrt20">
+        <navigator url="/pages/user/personalData/modifyName/modifyName?name={{nickName}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">昵称</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access">{{nickName}}</view>
+        </navigator>
+        <view  bindtap="modifySexTap" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">性别</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access">{{gender>0?(gender==1?'男':'女'):'未知'}}</view>
+        </view>
+        <view bindtap="modifySignTap" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">个性签名</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access">{{sign=='null'?'':sign}}</view>
+        </view>
+        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">实名认证</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"><text class="realName">未认证</text></view>
+        </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title mrt20" bindtap="changePhone">
+        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">手机号</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access">{{phone=='null'?'':phone}}</view>
+        </view>
+    </view>
+</view>

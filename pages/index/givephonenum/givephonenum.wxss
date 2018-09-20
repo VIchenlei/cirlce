@@ -1,0 +1,135 @@
+/* pages/givephonenum/givephonenum.wxss */
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.lf{
+	float: left;
+}
+.rg{
+	float: right;
+}
+page{
+	background:#edf0f7;
+}
+.box{
+	padding:0 30rpx;
+}
+.prompttxt{
+	font-size:26rpx;
+	color: #999;
+	/*padding:50rpx 0;*/
+}
+
+.button{
+	background-color:#e8522c;
+	color: #fff;
+	height:90rpx; 
+	line-height:90rpx;
+	font-size:30rpx;
+	margin-top:60rpx;
+}
+/*mask*/
+.drawer_screen { 
+	width: 100%; 
+	height: 100%; 
+	position: fixed; 
+	top: 0; 
+	left: 0; 
+	z-index: 1000; 
+	background: #000; 
+	opacity: 0.5; 
+	overflow: hidden; 
+} 
+  
+/*content*/
+.drawer_box { 
+	width:480rpx; 
+	height:350rpx;
+	overflow: hidden; 
+	position: fixed; 
+	top: 50%; 
+	left:50%; 
+	z-index: 1001; 
+	background: #fff; 
+	margin-top:-185rpx;
+	margin-left:-240rpx;
+	border-radius: 3rpx;
+}
+.drawer_box-tit{
+	width:100%;
+	height:87rpx; 
+	background:#F75D25;
+	border-radius:3rpx;
+	font-size:32rpx;
+	color:#fff;
+	text-align: center;
+	line-height:87rpx;
+}
+.drawer_box-fa-inpput{
+	width:210rpx;
+	height:67rpx;
+	border-radius:3rpx;
+	border:2rpx solid #ddd;
+	padding-left:8rpx;
+	margin-left: 61rpx;
+	margin-top: 56rpx;
+	font-size:26rpx;
+	color:#333;
+}
+.drawer_box-fa-img{
+	margin-left:32rpx;
+	margin-top:56rpx;
+	text-align: center;
+}
+.drawer_box-bt{
+	width:100%;
+	height:86rpx;
+	border-top:2rpx solid #ddd;
+	margin-top:50rpx;
+}
+.drawer_box-bt-txt{
+	width:238rpx;
+	font-size:32rpx;
+	color: #F75D25;
+	text-align: center;
+	line-height:86rpx;
+}
+.sure{
+	border-left:1rpx solid #ddd;
+}
+.btnCover{
+	background: #fff;
+	border-radius:0;
+	border-top:1rpx solid #e5e5e5;
+	color:#c55c47;
+    font-size:30rpx;
+}
+.btnCover::after{
+
+	color:#c55c47;
+	border:none;
+}
+.mrt40{
+	margin-top:40rpx;
+}
+.btnlf{
+	background: #fff;
+	border-radius:0;
+	border-top:2rpx solid #e5e5e5;
+	color:#c55c47;
+	border-left:none;
+}
+.weui-btn{
+	background:#c55c47;
+	color:#fff;
+}
+.btnfa{
+	width:690rpx;
+	margin:0 30rpx;
+	position:fixed;
+	bottom:20rpx;
+}

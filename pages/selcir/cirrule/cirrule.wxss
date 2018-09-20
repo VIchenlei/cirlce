@@ -1,0 +1,70 @@
+/* pages/cirrule/cirrule.wxss */
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.lf{
+	float: left;
+}
+.rg{
+	float: right;
+}
+page{
+	height: 100%;
+}
+.rule{
+	width:750rpx;
+	height: 100%;
+	position: fixed;	
+}
+.rule-cont{
+	width: 750rpx;
+	margin:350rpx auto;
+	text-align: center;
+}
+.rule-img{
+	text-align: center;
+}
+.rule-txt{
+	display: block;
+	font-size:28rpx;
+	color: #21272d;
+	margin-top:8rpx;  
+}
+.mrtop{
+	margin-top:30rpx; 
+}
+.read{
+	width:315rpx;
+	height:30rpx;
+	margin:30rpx auto;
+	text-align: center;
+}
+.read-txt{
+	font-size: 26rpx;
+	color: #999;
+	line-height:30rpx;
+}
+.read-img{
+	/*vertical-align:middle;*/
+	margin-right: 15rpx;
+}
+.marlf{
+	margin-left:5rpx;
+	text-decoration:underline; 
+}
+.btn{
+	width:720rpx;
+	position: absolute;
+	bottom: 0;
+	padding:15rpx; 
+	border-top:1rpx solid #e1e4eb; 
+}
+.btn .button{
+	background-color:#c55c47;
+	color: #fff; 
+  font-size:16px;
+}

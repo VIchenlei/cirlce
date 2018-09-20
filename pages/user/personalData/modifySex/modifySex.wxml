@@ -1,0 +1,20 @@
+<!--pages/user/personalData/personalData/modifySex/modifySex.wxml-->
+<view class="page">
+	<view class="weui-cells weui-cells_after-title mart50">
+	    <radio-group bindchange="radioChange">
+	        <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
+	            <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+
+	            <view class="weui-cell__bd">{{item.name}}</view>
+	            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+	                <icon class="weui-icon-radio" type="success_no_circle" size="16" color="#c55c47"></icon>
+	            </view>
+	        </label>
+	    </radio-group>
+	</view>
+	<view class="btn">
+		<button class="button" disabled="{{disabled}}" plain="{{plain}}" loading="{{loading}}"  size="default"  bindtap="modSexTap" hover-class="custom-button-hover-class">完成</button>		
+	</view>
+</view>
+
+

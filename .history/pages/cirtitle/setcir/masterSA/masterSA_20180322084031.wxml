@@ -1,0 +1,49 @@
+<!--pages/cirtitle/setcir/masterSA/masterSA.wxml-->
+<view class="page">
+	<view class="weui-cells weui-cells_after-title masterSA" wx:if="{{isSetUpTheme}}">
+        <navigator url="/pages/cirtitle/setcir/masterSA/ModifyPS/ModifyPS?circleId={{circleId}}&publishPayThemePerson={{publishPayThemePerson}}&publishThemePerson={{publishThemePerson}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__bd bdnone">设置发主题权限</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+    </view>
+    <view class="weui-cells weui-cells_after-title masterSA">
+        <view class="weui-cell weui-cell_switch">
+            <view class="weui-cell__bd">允许成员分享主题至微信</view>
+            <view class="weui-cell__ft">
+                <switch class="switch" checked="{{isShareWx}}" bindchange="ShareWxChange"/>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title masterSA">
+        <view class="weui-cell weui-cell_switch">
+            <view class="weui-cell__bd">开放圈子成员列表</view>
+            <view class="weui-cell__ft">
+                <switch class="switch" checked="{{isOpenMemberList}}" bindchange="OpenMemberListChange"/>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title masterSA">
+        <view class="weui-cell weui-cell_switch">
+            <view class="weui-cell__bd">邀请榜</view>
+            <view class="weui-cell__ft">
+                <switch class="switch" checked="{{isInvit}}" bindchange="InvitChange"/>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title masterSA">
+        <view class="weui-cell weui-cell_switch">
+            <view class="weui-cell__bd">允许成员私聊</view>
+            <view class="weui-cell__ft">
+                <switch class="switch" checked="{{isPrivateChat}}" bindchange="PrivateChatChange"/>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title masterSA">
+        <view class="weui-cell weui-cell_switch">
+            <view class="weui-cell__bd">允许游客浏览圈子最新10条主题</view>
+            <view class="weui-cell__ft">
+                <switch class="switch" checked="{{isShowTen}}" bindchange="ShowTenChange"/>
+            </view>
+        </view>
+    </view>
+</view>

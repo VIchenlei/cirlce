@@ -1,0 +1,42 @@
+/* pages/cirtitle/report/editreport/editreport.wxss */
+
+page {
+    background: #fff;
+}
+
+.page {
+    padding: 0 30rpx;
+    overflow: hidden;
+}
+
+.weui-cells {
+    margin-top: 30rpx;
+    background: #efefef;
+}
+
+.weui-cells:before {
+    border-top: none;
+}
+
+.weui-cells:after {
+    border-bottom: none;
+}
+
+.weui-uploader {
+    margin-top: 30rpx;
+}
+
+.btn {
+    width: 690rpx;
+    position: absolute;
+    bottom: 30rpx;
+}
+
+.btn .button {
+    background-color: #c55c47;
+    color: #fff;
+}
+
+.btn .button-hover {
+    background-color: #a04f3f;
+}

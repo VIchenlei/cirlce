@@ -1,0 +1,33 @@
+<!--pages/news/message/message.wxml-->
+<view class="page">
+	<view class="money" wx:for="{{messageArr}}" wx:key="messageKey">
+		<view class="receive-date">{{item.timeFormatTop}}</view>
+		<view class="weui-form-preview">
+	        <view class="weui-form-preview__bd">
+	        	<view class="title">{{item.title}}</view>
+	        	<view class="date">{{item.timeFormatShort}}</view>
+	        	<view class="message">{{item.message}}</view>
+	            <view class="weui-form-preview__item mart15">
+	                <view class="weui-form-preview__label">圈子名称:</view>
+	                <view class="weui-form-preview__value">{{item.circleName}}</view>
+	            </view>
+	            <view class="weui-form-preview__item"  hidden="{{item.isFollowPay}}">
+	                <view class="weui-form-preview__label">加入时间:</view>
+	                <view class="weui-form-preview__value">{{item.timeFormatLong}}</view>
+	            </view>
+	            <view class="weui-form-preview__item marb15">
+	                <view class="weui-form-preview__label">到期时间:</view>
+	                <view class="weui-form-preview__value">{{item.expireTimeFormat}}</view>
+	            </view>
+	            <view class="weui-cell weui-cell_access" bindtap="detailimgTap" data-pay="{{item.isFollowPay}}" data-id="{{item.circleId}}">
+	                <view class="weui-cell__bd">{{item.isFollowPay?'立即续费':'进入圈子'}}</view>
+	                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+	            </view>
+	        </view>
+	    </view>    
+	</view>
+    <!-- loadmore -->
+    <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>  
+    <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view> 
+</view>
+

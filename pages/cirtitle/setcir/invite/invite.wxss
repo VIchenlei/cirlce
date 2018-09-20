@@ -1,0 +1,86 @@
+/* pages/cirtitle/setcir/invite/invite.wxss */
+
+.index {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.lf {
+    float: left;
+}
+
+.rg {
+    float: right;
+}
+
+.dynamic-empty {
+    width: 280rpx;
+    height: 280rpx;
+    margin: 58% auto;
+}
+
+.dynamic-empty .img {
+    display: block;
+    margin: 0 auto;
+}
+
+.dynamic-empty .empty-txt {
+    display: inline-block;
+    width: 100%;
+    padding-top: 0;
+    font-size: 30rpx;
+    color: #ababab;
+    text-align: center;
+}
+
+.ml20 {
+    margin-left: 20rpx;
+}
+
+.mt15 {
+    margin-top: 15rpx;
+}
+
+.m30 {
+    margin-top: 30rpx;
+}
+
+.mr20 {
+    margin-right: 20rpx;
+}
+
+.mange,
+.members {
+    height: 100rpx;
+    background: #fff;
+    line-height: 100rpx;
+}
+
+.membertxt {
+    font-size: 30rpx;
+    color: #999;
+    line-height: 100rpx;
+}
+
+.blacklisttxt {
+    font-size: 34rpx;
+    color: #333;
+    line-height: 100rpx;
+}
+
+.borderbt {
+    border-bottom: 2rpx solid #e6e6e6;
+}
+
+.numcolor {
+    color: #c55c47;
+}

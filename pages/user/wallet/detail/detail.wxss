@@ -1,0 +1,9 @@
+/* pages/user/wallet/detail/detail.wxss */
+@import '../../../news/news.wxss';
+.weui-cell{
+    border-top:none; 
+}
+.rgtxt{
+    font-size:28rpx;
+    color:#333;
+}

@@ -1,0 +1,45 @@
+<!--pages/user/myRelease/myRelease.wxml-->
+<view class="page">
+	<image mode="aspectFill" class="bg" src="{{head}}" />
+	<view class="headImg">
+		<image style="width:130rpx;height:130rpx;border-radius:50%;" mode="aspectFill" class="weui-media-box__thumb" src="{{head}}" />
+		<view class="name">{{name}}</view>
+	</view>
+	<view class="dynamic" scroll-y="true" style="height:{{themeArr.length>0?'100%':'0'}};">
+		<view class="dynamic-box" wx:for="{{themeArr}}" wx:key="themeKey" bindtap="detailTap" data-id="{{item.id}}">
+			<!-- 文字内容 -->
+			<view class="dynamic-txt">
+				<view class="dynamic-txtp">{{item.themeText!=null?item.themeText:""}}</view>
+			</view>
+			<!-- 图片 -->
+			<view class="dynamic-imglist imglist clearfix" wx:if="{{item.images.length>0}}" >
+				<image lazy-load="{{lazyload}}" wx:if="{{imgesindex>3?false:true}}" mode="aspectFill" class="nineimg lf" wx:for="{{item.images}}" wx:for-index="imgesindex" wx:key="imageskey"  wx:for-item="imgitem" style="width:128rpx;height:128rpx;" src="{{imgitem}}"  data-index="{{imgesindex}}" data-src="{{item.images}}"></image>
+				<image lazy-load="{{lazyload}}" style="width:128rpx;height:128rpx;" wx:if="{{item.images.length>4}}" mode="aspectFill" class="nineimg lf" src="/images/moreimg.png"></image>
+			</view>
+			<!-- 视频 -->
+			<view class="dynamic-video showVideo" wx:if="{{item.videos.length>0}}" id="{{item.videos[0].length}}">
+				<view  class="ninevideo" id="ninevideo{{item.id}}"  data-video="{{item.id}}" data-src="{{item.videos[0].videoUrl}}">
+					<view class="showVideoImg">
+						<image lazy-load="{{lazyload}}" mode="aspectFill" style="width:200rpx;height:200rpx; vertical-align:middle;" src="{{item.videos[0].videoUrl}}?x-oss-process=video/snapshot,t_2000,f_jpg,w_0,h_0,m_fast" data-src="{{item.videos[0].videoUrl}}"></image>
+						<image lazy-load="{{lazyload}}" class="ninevideoplay1 play" style="width:70rpx;height:70rpx;" src="/images/play.png"></image>
+					</view>																			
+				</view>
+			</view>
+			<!-- 音频 -->
+			<view class="dynamic-audios audios" wx:if="{{item.audios.length>0}}">
+				<view class="nineaudio" id="nineaudio{{item.id}}" data-audio="{{item.id}}" bindtap="playaudio" data-audiosrc="{{item.audios[0].audioUrl}}">
+					<image lazy-load="{{lazyload}}" style="width:710rpx;height:80rpx;vertical-align:middle;" src="/images/playaudiobg.png"></image>
+					<text class="timelong">{{item.audios[0].formatDuration}}</text>
+				</view>	
+			</view>
+			<view class="clearfix time">
+				<text class="lf timetxt">{{item.creationTimeFormat}}</text>
+				<text class="rg timetxt">{{item.circleName}}</text>
+			</view>
+		</view>
+	</view>
+    
+</view>
+<!-- loadmore -->
+    <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>  
+    <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view> 

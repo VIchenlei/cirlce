@@ -1,0 +1,144 @@
+<!--pages/cirsharelist/cirsharelist.wxml-->
+<view class="page" wx:if="{{isSownCont}}">
+	<view>
+		<image style="width:750rpx;height:350rpx;vertical-align:middle;" src="{{circleInfo.coverPicture}}" mode="aspectFill"></image>
+	</view>
+	<view class="info">
+		<view class="num">
+			<text class="numtxt"><text class="numcolor">{{circleInfo.memberCount}}</text>位圈友</text>
+			<text class="numtxt ml50"><text class="numcolor">{{circleInfo.themeCount}}</text>篇主题</text>
+		</view>
+		<view class="title">{{circleInfo.name}}</view>
+		<view class="intro">{{circleInfo.intro}}</view>
+		<view class="weui-loadmore weui-loadmore_line">
+			<view class="weui-loadmore__tips weui-loadmore__tips_in-line">
+				由
+	            <text class="namecolor"> {{circleInfo.masterNickName}}</text>
+	            创建
+			</view>
+        </view>
+        <image class="head" mode="aspectFill" src="{{circleInfo.masterAvatarUrl}}"></image>
+	</view>
+	<view class="weui-article" wx:if="{{joinMode==1}}">
+        <view class="weui-article__section">
+            <view class="weui-article__section">
+                <view class="weui-article__h3">收费规则</view>
+                <view class="weui-article__p">
+                    1、圈子服务为虚拟商品，购买后不提供退款服务。购买即代表你同意遵不叫事圈儿《用户协议》
+                </view>
+                <view class="weui-article__p">
+                    2.成功付费后，请耐心等待管理员审核，若超过48小时管理员未审核你的加入申请，系统会自动将付费金额原路退回你的付款账户；如你被同意加入，你可使用当前账号登录不叫事圈儿与圈友互动。
+                </view>
+                <view class="weui-article__p">
+                    3、微信关注关注不叫事圈儿服务号(微信号:gh_ff85153284cc)
+                </view>
+            </view>
+        </view>
+    </view>
+	<scroll-view class="dynamic" scroll-y="true">
+		<view class="dynamic-empty" style="display:{{themeisn}};">
+			<image class="img" style="width:200rpx; height:200rpx;" src="{{emptyimg}}"></image>
+			<text class="empty-txt">{{emptytxt}}</text>
+		</view>
+		<view class="dynamic-cont"  style="display:{{themeisb}};">
+			<view class="dynamic-item" wx:for="{{themearr}}" wx:key="themekey" wx:for-index="themeidx">
+				<view class="dynamic-item-top clearfix">
+					<image class="dynamic-item-top-lf-img lf" lazy-load="{{lazyload}}" style="width:90rpx;height:90rpx; border-radius:50%"src="{{item.avatarUr}}"></image>
+					<view class="lf dynamic-item-top-fa">
+						<view class="clearfix">
+							<text class="dynamic-item-top-lf-user lf {{item.role!='成员'?(item.role=='圈主'?'circolor':'admincolor'):''}}"> {{item.nickName}} </text>
+							<text class="dynamic-item-top-lf-cir lf {{item.role!='成员'?(item.role=='圈主'?'cirbg':'adminbg'):''}}" wx:if="{{item.role=='成员'?false:true}}">{{item.role}}</text>
+						</view>
+						<view class="dynamic-sign">{{item.sign}}</view>
+					</view>
+				</view>
+				<view class="dynamic-item-ct">
+					<view class="dynamic-item-ct-cont" catchtap="alertTap" data-item="{{item}}">
+						<view class="dynamic-item-ct-pay" wx:if="{{item.isFree==false}}">
+							<view class="dynamic-item-ct-tit">{{item.introduction!=null?item.introduction:""}}</view>
+							<text class="dynamic-item-ct-paytxt" wx:if="{{item.isCanView?false:(item.themeText.length==0||item.themeText==null?false:true)}}">剩余{{item.themeText.length}}字已被发布者设置为付费内容，点击支付{{item.payMoney}}元查看完整内容</text>
+						</view>
+						<view class="dynamic-item-ct-paid" wx:if="{{item.isCanView}}">
+							<text id="{{themeidx}}" class="dynamic-item-ct-tit {{item.isExpandAllText ? extend:flod}}" data-hi="{{item.id}}">{{item.themeText!=null?item.themeText:""}}</text>
+						</view>
+					</view>
+					<view class="alltxt" wx:if="{{item.themeText.length/18>5}}"  catchtap="alertTap" data-hi="{{item.id}}"  data-num="{{themeidx}}">{{!item.isExpandAllText ? "全文":"收起"}}</view>
+					<!-- 图片 -->
+					<view class="dynamic-imglist clearfix" wx:if="{{item.images.length>0}}" >
+						<image lazy-load="{{lazyload}}" class="nineimg lf" wx:for="{{item.images}}" wx:for-index="imgesindex" wx:key="imageskey"  wx:for-item="imgitem" style="width:175rpx;height:175rpx;" src="{{imgitem}}" catchtap="alertTap" data-index="{{imgesindex}}" data-src="{{item.images}}"></image>
+					</view>
+					<!-- 视频 -->
+                    <view class="dynamic-video" wx:if="{{item.videos[0].scale>1}}" catchtap="alertTap">
+                        <view class="ninevideo" id="ninevideo{{item.id}}"catchtap="alertTap">
+                            <view class="ninevideofa1" wx:if="{{item.videos[0].scale>1}}">
+                                <image lazy-load="{{lazyload}}" style="width:520rpx;height:280rpx; vertical-align:middle;" src="{{item.videos[0].videoCoverUrl}}"
+                                    data-src="{{item.videos[0].videoUrl}}"></image>
+                                <image lazy-load="{{lazyload}}" class="ninevideoplay1" style="width:70rpx;height:70rpx;" src="/images/play.png"></image>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="Verticalvideo" wx:if="{{item.videos[0].scale<1}}" catchtap="alertTap">
+                        <view class="ninevideofa2 " wx:if="{{item.videos[0].scale<1}}" style="height:440rpx; position: relative;" id="ninevideo{{item.id}}"
+                            catchtap="alertTap">
+                            <image class="{{item.videos[0].rotation>0?'rotateRight':''}}" lazy-load="{{lazyload}}" style="width:{{item.videos[0].rotation>0?'440':'250'}}rpx;height:{{item.videos[0].rotation>0?'250':'440'}}rpx; vertical-align:middle;"
+                                src="{{item.videos[0].videoCoverUrl}}" data-src="{{item.videos[0].videoUrl}}"></image>
+                            <image lazy-load="{{lazyload}}" class="ninevideoplay2" style="width:70rpx;height:70rpx;" src="/images/play.png"></image>
+                        </view>
+                    </view>
+
+					<!-- 音频 -->
+					<view class="dynamic-audios" wx:if="{{item.audios.length>0}}">
+						<view class="nineaudio" id="nineaudio{{item.id}}" data-audio="{{item.id}}" catchtap="alertTap" data-audiosrc="{{item.audios[0].audioUrl}}">
+							<image lazy-load="{{lazyload}}" style="width:568rpx;height:80rpx;vertical-align:middle;" src="/images/playaudiobg.png"></image>
+							<text class="timelong">{{item.audios[0].formatDuration}}</text>
+						</view>
+					</view>
+					<view class="dynamic-item-bt clearfix">
+						<text class="dynamic-item-bt-txt"> {{item.creationTimeFormat}} </text>
+						<view class="dynamic-item-bt-rg">
+							<image lazy-load="{{lazyload}}" style="width:30rpx; height: 30rpx;" src="{{payimg}}" catchtap="alertTap"></image>
+							<image lazy-load="{{lazyload}}" style="width:30rpx; height: 30rpx; margin:0 50rpx;" data-index="{{themeidx}}" data-userid="{{item.praiseList.userId}}" data-praid="{{item.id}}" src="{{item.isPraise==true ? ispraiseimg:collectimg}}" catchtap="alertTap"></image>
+							<image lazy-load="{{lazyload}}" style="width:30rpx; height: 30rpx;" src="{{commentimg}}" catchtap="alertTap" data-com="{{isdiscombtn}}" data-index="{{themeidx}}" data-foruserid="0" data-forcomid="0" data-themeid="{{item.id}}"></image>
+						</view>
+					</view>
+					<view class="collect-user" wx:if="{{item.praiseList.length>0}}">
+						<image class="collect-user-img" lazy-load="{{lazyload}}" style="width:34rpx; height:34rpx;" wx:if="{{item.praiseList.length>0}}" src="{{collectshow}}"></image>
+						<label class="collect-username"  data-userid="{{user.userId}}" wx:for="{{item.praiseList}}" wx:for-item="user" wx:key="praisekey" wx:for-index="idx">{{ user.nickName}}
+							<label wx:if="{{idx<item.praiseList.length-1}}">,</label>
+						</label>
+					</view>
+					<view class="comment-cont" wx:if="{{item.commentList.length>0}}">
+						<view class="reply" wx:for="{{item.commentList}}" wx:for-item="reply" wx:key="replykey" wx:for-index="replyidx">
+							<view class="replyfa">
+								<text class="replytxt">{{reply.nickName}}</text>
+								<text class="replytxt replycolor" wx:if="{{reply.forUserId!=0}}"> 回复 </text>
+								<text class="replytxt" wx:if="{{reply.forUserId!=0}}">{{reply.forNickName}}</text>
+								<text class="replytxt">:</text>
+								<text class="replytxt replycolor" catchtap="alertTap" data-index="{{themeidx}}" data-foruserid="{{reply.userId}}" data-themeid="{{item.id}}" data-comid="{{reply.id}}">{{reply.commentText}}</text>
+								<text wx:if="{{reply.imageUrl!=null}}" data-prviewimg="{{reply.imageUrl}}" catchtap="alertTap" class="replytxt">查看图片</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</scroll-view>
+	<view class="sure">
+		<view class="weui-flex">
+            <view class="weui-flex__item">
+            	<button class="weui-btn"  catchtap="surebtn" disabled="{{disabled}}">{{btnTxt}}</button>
+            </view>
+        </view>
+    </view>
+    <view class='maskLayer' wx:if="{{chooseSize}}" bindtap='hideModal' catchtouchmove="{{catchtouchmove}}"></view>
+	<view class='choose' wx:if="{{chooseSize}}" animation='{{animationData}}' catchtouchmove="{{catchtouchmove}}">
+		<view class="choosebox">
+            <view class="choosebox-txt choose-padt">购买有限期按每月30天计算</view>
+            <view class="choosebox-txt">圈子服务为虚拟商品，购买后不提供让退款服务，如有疑问付款后，请在圈子内联系圈主</view>
+            <view class="clearfix choosefa" wx:for="{{tollList}}" wx:key="tollKey" data-type="{{item.type}}" catchtap="payJoinTap" data-tollnum="{{item.tollNum}}">
+                <text class="lf choosebox-date">{{item.tollName}}</text>
+                <view class="rg choose-amount">￥{{item.tollNum}}</view>
+            </view>
+		</view>
+	</view>
+</view>

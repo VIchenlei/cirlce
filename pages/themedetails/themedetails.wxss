@@ -1,0 +1,40 @@
+/* pages/themedetails/themedetails.wxss */
+
+.cirinfo {
+    padding: 10rpx;
+    margin: 0 35rpx;
+    border: 1rpx solid #ededed;
+    border-radius: 2rpx;
+}
+
+.cirinfolf-com {
+    width: 485rpx;
+    padding-left: 10rpx;
+}
+
+.cirinfolf-com-top-txt {
+    font-size: 28rpx;
+    color: #333;
+}
+
+.comein {
+    color: #c55c47;
+}
+
+.cirinfolf-com-ct-txt {
+    font-size: 26rpx;
+    color: #666;
+    line-height: 50rpx;
+}
+
+.lf50 {
+    margin-left: 40rpx;
+}
+
+.cirintro {
+    margin-left: 10rpx;
+}
+
+.borderno {
+    border-bottom: none;
+}

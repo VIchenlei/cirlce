@@ -1,0 +1,129 @@
+/* pages/cirrule/pay/payinfo/payinfo.wxss */
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.lf {
+    float: left;
+}
+
+.rg {
+    float: right;
+}
+
+.jewel {
+    text-align: center;
+    padding: 100rpx 0;
+}
+
+.jewelimg {
+    vertical-align: middle;
+}
+
+.dersert {
+    padding: 0 30rpx 30rpx;
+}
+
+.dersert-cont {
+    border: 1rpx solid #e1e4eb;
+    border-radius: 10rpx;
+    padding: 30rpx;
+    margin-bottom: 30rpx;
+}
+
+.dersert-txt {
+    font-size: 28rpx;
+    color: #222;
+    line-height: 50rpx;
+}
+
+.switch {
+    width: 90rpx !important;
+    height: 50rpx !important;
+}
+
+/*swtich样式-start*/
+
+/*swtich整体大小*/
+
+.wx-switch-input {
+    width: 90rpx !important;
+    height: 50rpx !important;
+    background: #c55c47 !important;
+    border: none !important;
+}
+
+/*白色样式（false的样式）*/
+
+.wx-switch-input::before {
+    width: 90rpx !important;
+    height: 50rpx !important;
+    background: #d9d9d9 !important;
+    border: none !important;
+}
+
+/*绿色样式（true的样式）*/
+
+.wx-switch-input::after {
+    width: 52rpx !important;
+    height: 50rpx !important;
+    border: none !important;
+}
+
+/*swtich样式end*/
+
+.money {
+    padding-top: 30rpx;
+}
+
+.moneytxt {
+    font-size:28rpx;
+    color: #222;
+    line-height: 53rpx;
+}
+
+.moneybtn {
+    width: 120rpx;
+    padding-left: 230rpx;
+}
+
+.money-placeholder {
+    color: #999;
+}
+
+.btn {
+    width: 720rpx;
+    position: fixed;
+    bottom: 0;
+    padding: 15rpx;
+    background: #fff;
+    z-index: 999;
+}
+
+.btn .button {
+    background-color: #c55c47;
+    color: #fff;
+    font-size:16px;
+}
+
+.describe {
+    margin: 50rpx 0;
+}
+
+.destxt {
+    font-size: 28rpx;
+    color: #999;
+}
+
+.descolor {
+    color: #c55c47;
+}
+
+.marbt {
+    padding-bottom: 100rpx;
+}

@@ -1,0 +1,36 @@
+/* pages/cirtitle/report/report.wxss */
+
+.report {
+    padding: 15rpx 30rpx;
+    display: flex;
+    align-items: center;
+}
+
+.report-radio {
+    width: 20rpx;
+    height: 20rpx;
+    border: 1rpx solid #c55c47;
+    border-radius: 50%;
+}
+
+.bgcolor {
+    background: #c55c47;
+}
+
+.report-txt {
+    font-size: 28rpx;
+    color: #333;
+    margin-left: 15rpx;
+}
+
+.btn {
+    width: 720rpx;
+    position: absolute;
+    bottom: 0;
+    padding: 15rpx;
+}
+
+.btn .button {
+    background-color: #c55c47;
+    color: #fff;
+}

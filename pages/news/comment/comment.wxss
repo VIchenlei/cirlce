@@ -1,0 +1,83 @@
+/* pages/news/comment/comment.wxss */
+
+.box {
+    overflow: hidden;
+}
+
+.box .dynamic-empty {
+    margin: 58% auto;
+}
+
+.dynamic {
+    overflow: inherit;
+}
+
+.circleName {
+    font-size: 26rpx;
+    color: #999;
+}
+
+.dynamic-item-top-lf-user {
+    font-weight: normal;
+    font-size: 28rpx;
+}
+
+.dynamic-cont {
+    margin-top: 0;
+}
+
+.dynamic-item-top-fa {
+    line-height: 70rpx;
+}
+
+.praiseCont {
+    background: #f1f5f9;
+    padding: 20rpx 0 20rpx 20rpx;
+}
+
+.dynamic-item-ct-cont,
+.dynamic-imglist,
+.dynamic-video,
+.dynamic-item-bt,
+.dynamic-audios,
+.Verticalvideo {
+    padding-left: 0;
+}
+
+.praiseFlod {
+    width: 660rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.nineaudio {
+    width: 640rpx;
+}
+
+.dynamic-item-top-fa {
+    width: inherit;
+}
+
+.commentReplay {
+    font-size: 26rpx;
+    color: #666;
+    padding: 3rpx 18rpx;
+    border: 1rpx solid #eee;
+    border-radius: 4rpx;
+    display: block;
+}
+
+.replayman {
+    font-size: 28rpx;
+    color: #333;
+}
+
+.replayName {
+    font-size: 28rpx;
+    color: #c55c47;
+}
+
+.payview {
+    color: #c55c47;
+}

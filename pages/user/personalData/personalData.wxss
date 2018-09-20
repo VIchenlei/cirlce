@@ -1,0 +1,54 @@
+/* pages/user/personalData/personalData.wxss */
+
+page {
+    background: #F0F0F0;
+}
+
+.head {
+    text-align: center;
+    padding: 46rpx 0;
+    background: #fff;
+    position: relative;
+}
+
+.shot {
+    width: 41rpx;
+    height: 41rpx;
+    position: absolute;
+    left: 420rpx;
+    top: 140rpx;
+}
+
+.mrt20 {
+    margin-top: 20rpx;
+}
+
+.weui-cells:before {
+    border-top: none;
+}
+
+.weui-cells:after {
+    border-bottom: none;
+}
+
+.weui-media-box__hd_in-appmsg {
+    width: 144rpx;
+    height: 144rpx;
+}
+
+.weui-panel__bd {
+    background: #fff;
+}
+
+.weui-media-box__info {
+    margin-top: 20rpx;
+    color: #999;
+}
+
+.weui-cell {
+    padding: 26rpx 30rpx;
+}
+
+.realName {
+    color: #C55C47;
+}

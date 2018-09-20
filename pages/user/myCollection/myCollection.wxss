@@ -1,0 +1,9 @@
+/* pages/user/myCollection/myCollection.wxss */
+
+.box {
+    overflow: hidden;
+}
+
+.box .dynamic-empty {
+    
+}

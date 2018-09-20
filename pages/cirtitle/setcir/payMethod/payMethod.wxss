@@ -1,0 +1,6 @@
+/* pages/cirtitle/setcir/payMethod/payMethod.wxss */
+
+@import '../../../selcir/cirrule/payinfo/payinfo.wxss';
+.dersert {
+    padding-bottom: 100rpx;
+}

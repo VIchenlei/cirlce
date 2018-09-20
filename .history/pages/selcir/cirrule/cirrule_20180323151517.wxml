@@ -1,0 +1,17 @@
+<!--pages/cirrule/cirrule.wxml-->
+<view class="rule">
+	<view class="rule-cont">
+		<image class="rule-img" style="width: 150rpx; height: 150rpx;"  src="{{lampimg}}"></image>
+		<text class="rule-txt mrtop"> {{firtxt}} </text>
+		<text class="rule-txt"> {{sentxt}} </text>
+		<text class="rule-txt"> {{tretxt}} </text>	
+		<view class="read clearfix">
+			<image class="read-img lf" bindtap="readimgTap" data-imgsrc="{{agreeimg}}" style="width: 35rpx;height:35rpx;"  src="{{agreeimg}}"></image>
+			<text class="read-txt lf">已阅读并同意</text>	
+			<text class="read-txt marlf lf" bindtap="agreementTap">用户协议</text>	
+		</view>	
+	</view>
+	<view class="btn">
+		<button class="button" disabled="{{disabled}}" plain="{{plain}}" loading="{{loading}}"  size="default"  bindtap="nextTap" hover-class="custom-button-hover-class">下一步</button>		
+	</view>
+</view>

@@ -1,0 +1,30 @@
+<!--pages/cirtitle/setcir/joinAudit/joinAudit.wxml-->
+<view class="page">
+	<view class="dynamic-empty" wx:if="{{isempty}}">
+		<image class="img" style="width:200rpx; height:200rpx;" src="/images/empty.png"></image>
+		<text class="empty-txt">空空如也</text>
+	</view>
+	<view class="members clearfix borderbt" wx:for="{{joinAuditArr}}" wx:if="{{isJoinAudit}}" wx:key="joinAuditKey">
+		<image class="lf ml20 mt15" style="width:70rpx; height:70rpx;border-radius:50%;" src="{{item.avatarUrl}}"></image>
+		<text class="lf blacklisttxt ml20">{{item.nickName}}</text>
+		<image id="{{item.state}}" class="rg mr20 m30" style="width:40rpx; height:40rpx;" src="/images/sigh.png" bindtap="showModal" data-idx="{{index}}"></image>
+		<text class="rg membertxt mr20" wx:if="{{item.state==1}}">已同意</text>
+		<text class="rg membertxt mr20" wx:if="{{item.state==-1}}">已失效</text>
+		<text class="rg agreetxt mr20" wx:if="{{item.state==0}}" bindtap="agreeTap" data-userid="{{item.userId}}">同意</text>
+	</view>	
+
+	<view class='maskLayer' wx:if="{{chooseSize}}" bindtap='hideModal'></view>
+	<view class='choose' wx:if="{{chooseSize}}" animation='{{animationData}}'>
+		<view class="choosebox">
+			<image class="chooseimg" style="width:70rpx;height:70rpx;border-radius:50%;" src="{{setmembers.avatarUrl}}"></image>
+			<view class="choosename">{{setmembers.nickName}}</view>
+			<text class="choosedate">{{setmembers.formatString}}</text>
+			<view class="mt15">
+				<view class="choosereomvetxt gray"  data-idx="{{index}}"  wx:if="{{setmembers.state==1}}">已同意</view>
+				<view class="choosereomvetxt gray"  data-idx="{{index}}" wx:if="{{setmembers.state==-1}}">已失效</view>
+				<view class="choosereomvetxt" bindtap="agreeTap" data-userid="{{setmembers.userId}}" wx:if="{{setmembers.state==0}}">同意</view>
+			</view>
+		</view>
+		<view class="cancel choosereomvetxt" bindtap='hideModal'>取消</view>
+	</view>
+</view>

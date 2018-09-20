@@ -1,0 +1,140 @@
+<!-- pages/publishtheme/publishtheme.wxml-->
+<view class="page">
+	<viwe class="top">
+		<view class="topviwe">
+			<text class="toptxt topcancel" bindtap="backTap">取消</text>
+		</view>
+		<view class="topviwe toppunlish">
+			<text class="toptxt publishtxt">发布主题</text>
+		</view>
+		<view class="topviwe topsend">
+			<text class="toptxt {{ispublishvalue}}" bindtap="sendTap">发送</text>
+		</view>
+	</viwe>
+	<!-- 免费主题 -->
+	<view class="freecont" wx:if="{{isfreetheme}}">
+		<textarea class="freecont-txt" placeholder="分享你的想法" placeholder-class="phcolor" value="{{publishvalue}}"  maxlength="-1" bindinput="inputTap"/>	
+		<viwe class="upfile clearfix" wx:if="{{isupload}}">
+			<image class="lf upfileimg" style="width:55rpx;height:50rpx;"  src="/images/upimg.png" bindtap="uploadimgTap"></image>
+			<image class="lf upfileimg" style="width:50rpx;height:50rpx;"  src="/images/voice.png" bindtap="upLoadVoiceTap"></image>
+			<image class="lf upfileimg" style="width:50rpx;height:50rpx;"  src="/images/video.png" bindtap="upLoadVideoTap"></image>
+		</viwe>
+		<!-- 显示需要上传图片 -->
+		<view class="weui-cells"  wx:if="{{isfreeviweimg}}">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+						<view class="weui-uploader__bd">
+				            <view class="weui-uploader__files" id="uploaderFiles"  wx:for="{{uploadimgarr}}" wx:key="imgkey">
+				                <view class="weui-uploader__file" bindtap="previewTap" bindlongpress="longimgTap" data-index="{{index}}">
+				                    <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+				                </view>
+				            </view>
+				            <view class="weui-uploader__input-box" wx:if="{{uploadimgarr.length>0&&uploadimgarr.length<9}}" bindtap="uploadimgTap">
+				                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+				            </view>
+				        </view>
+        			</view>
+                </view>
+            </view>
+        </view>
+
+		<!-- 显示需要上传视频 -->
+		<view class="viewvideo" wx:if="{{isfreevideo}}" data-src="{{viewVideoUrl}}" bindlongpress="longVideoTap" bindtap="playVideoTap">
+			<image class="videoplay" style="width:60rpx;height:60rpx;" src="/images/play.png" ></image>
+		</view>
+		<!-- 显示需要上传音频 -->
+		<view class="viewaudio" wx:if="{{isfreeaudio}}">
+			<image class="audioplayimg" style="width:50rpx; height: 50rpx; border-radius:5rpx;" src="/images/play.png" bindtap="playaudio" data-audio="{{upLoadAudioUrl}}"></image>
+			<text class="timelong">{{duration}}</text>
+			<image class="garbage" style="width:30rpx;height:30rpx;" src="/images/garbage.png" bindtap="delAudio"></image>
+		</view>		
+	</view>
+	<!-- 付费主题 -->
+	<view class="payTheme" wx:if="{{ispaytheme}}">
+		<!-- 展示免费内容 -->
+		<view class="payTheme-freecont">
+			<view class="txt">免费内容</view>
+			<textarea class="payTheme-freecont-txt txt" value="{{infoValue}}" placeholder-class="phcolor" placeholder="请再次输入一段引言，为你的付费内容吸引目光" maxlength="120"  bindinput="infoInput"/>	
+		</view>
+		<!-- 付费内容 -->
+		<view class="payCont">
+			<view class="payContPad">
+				<view class="txt">付费内容</view>
+					<textarea class="payCont-txt txt" value="{{payThemeValue}}" placeholder-class="phcolor" placeholder="请输入付费内容" maxlength="-1"  bindinput="payThemeInput"/>
+					<viwe class="upfile clearfix" wx:if="{{isupload}}">
+					<image class="lf upfileimg payupfileimg " style="width:55rpx;height:50rpx;"  src="/images/upimg.png" bindtap="uploadimgTap"></image>
+					<image class="lf upfileimg payupfileimg mrl20" style="width:50rpx;height:50rpx;"  src="/images/voice.png" bindtap="upLoadVoiceTap"></image>
+					<image class="lf upfileimg payupfileimg mrl20" style="width:50rpx;height:50rpx;"  src="/images/video.png" bindtap="upLoadVideoTap"></image>
+				</viwe>	
+			</view>
+			<!-- 显示需要上传图片 -->
+			<view class="weui-cells"  wx:if="{{isfreeviweimg}}">
+	            <view class="weui-cell">
+	                <view class="weui-cell__bd">
+	                    <view class="weui-uploader">
+							<view class="weui-uploader__bd">
+					            <view class="weui-uploader__files" id="uploaderFiles"  wx:for="{{uploadimgarr}}" wx:key="imgkey">
+					                <view class="weui-uploader__file" bindtap="previewTap" bindlongpress="longimgTap" data-index="{{index}}">
+					                    <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+					                </view>
+					            </view>
+					            <view class="weui-uploader__input-box" wx:if="{{uploadimgarr.length>0&&uploadimgarr.length<9}}" bindtap="uploadimgTap">
+					                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+					            </view>
+					        </view>
+	        			</view>
+	                </view>
+	            </view>
+	        </view>
+
+			<!-- 显示需要上传视频 -->
+			<view class="viewvideo" wx:if="{{isfreevideo}}" data-src="{{viewVideoUrl}}" bindlongpress="longVideoTap" bindtap="playVideoTap">
+				<image class="videoplay" style="width:60rpx;height:60rpx;" src="/images/play.png" ></image>
+			</view>
+			<!-- 显示需要上传音频 -->
+			<view class="viewaudio" wx:if="{{isfreeaudio}}">
+				<image class="audioplayimg" style="width:50rpx; height: 50rpx; border-radius:5rpx;" src="/images/play.png"></image>
+				<text class="timelong">{{duration}}</text>
+				<image class="garbage" style="width:30rpx;height:30rpx;" src="/images/garbage.png" bindtap="delAudio"></image>
+			</view>	
+		</view>
+		<!-- 付费金额 -->
+		<view class="payTheme-freecont mrt20">
+			<view class="txt">付费金额</view>
+			<view class="clearfix money-fa" >
+				<view class="money lf moneyFirst {{activeIndex==1 ? 'on':''}}" data-sum="1" bindtap="changeMoney">1元</view>
+				<view class="money lf {{activeIndex==2 ? 'on':''}}" data-sum="2" bindtap="changeMoney">2元</view>
+				<view class="money lf {{activeIndex==5? 'on':''}}" data-sum="5" bindtap="changeMoney">5元</view>
+				<view class="money lf {{activeIndex==8 ? 'on':''}}" data-sum="8" bindtap="changeMoney">8元</view>
+				<view class="money lf {{activeIndex==9.9 ? 'on':''}}" data-sum="9.9" bindtap="changeMoney">9.9元</view>
+			</view>
+		</view>
+	</view>
+	<!-- 录音 -->
+	<view class="voice-modal" wx:if="{{isShowRecord}}" bindtap="hideModalTap"></view>
+	<view class="voice" wx:if="{{isShowRecord}}">
+		<view class="clearfix">
+			<image class="lf mar10" style="width:45rpx;height:45rpx;" src="/images/back.png" bindtap="hideRecordTap"></image>
+			<image class="rg mar10" style="width:45rpx;height:45rpx;" src="/images/{{isShowSuspend==true?'agree':'noagree'}}.png" bindtap="{{isShowSuspend==true?'sureAudioTap':''}}"></image>
+		</view>
+		<view>
+			<view class="tapVoice" data-num="1" wx:if="{{isShowPlay}}">点击录音</view>
+			<view class="start" wx:if="{{isShowStart}}">
+				<image class="" style="width:300rpx;height:129rpx;vertical-align:middle;" src="/images/start.gif"></image>
+				<view>{{duration}}</view>
+			</view>
+			<view class="start" wx:if="{{isShowSuspend}}">
+				<image class="" style="width:300rpx;height:129rpx;vertical-align:middle;" src="/images/issuspend.png"></image>
+				<view>{{duration}}</view>
+			</view>
+		</view>
+		<view class="playVoice">
+			<image class="playVoice-img" bindtap="startVoiceTap" style="width:150rpx;height:150rpx;vertical-align:middle;" wx:if="{{isShowPlay}}" src="/images/playVoice.gif"></image>
+			<image class="playVoice-img" bindtap="stopVoiceTap" style="width:150rpx;height:150rpx;vertical-align:middle;" wx:if="{{isShowStart}}" src="/images/isstart.png"></image>
+			<image class="playVoice-img" style="width:150rpx;height:150rpx;vertical-align:middle;" wx:if="{{isShowSuspend}}" src="/images/suspend.gif"></image>
+		</view>
+		<view class="record" wx:if="{{isAgain}}">录音</view>
+		<view class="record again" wx:if="{{!isAgain}}" bindtap="againTap">重录</view>
+	</view>
+</view>

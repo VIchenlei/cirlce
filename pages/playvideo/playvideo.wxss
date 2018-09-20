@@ -1,0 +1,16 @@
+/* pages/playvideo/playvideo.wxss */
+
+page {
+    height: 100%;
+}
+
+.videofa {
+    width: 750rpx;
+    height: 100%;
+    background: #000;
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+}
